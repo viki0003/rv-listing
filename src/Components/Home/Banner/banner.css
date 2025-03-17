@@ -1,0 +1,53 @@
+.home-banner {
+  background-image: url("/src/Assets/Images/Home/banner-img.png");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+}
+
+.home-banner .container {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    justify-content: center;
+    padding: 123px 132px 160px 132px;
+    margin: inherit;
+    gap: 21px;
+    max-width: 65%;
+}
+
+.home-banner .container h1 {
+    font-family: Roboto;
+    font-weight: 500;
+    font-size: 65px;
+    line-height: 115%;
+    color: #fff;
+}
+
+.home-banner .container p {
+    color: #fff;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 150%;
+    margin-bottom: 10px;
+    text-wrap-style: balance;
+    margin-top: 0px;
+}
+
+.home-banner .container a {
+    width: fit-content;
+    border-radius: 10px;
+    border-width: 1px;
+    gap: 16px;
+    padding: 12px 30px;
+    display: flex;
+    align-items: center;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 100%;
+    text-transform: uppercase;
+    text-decoration: none;
+    color: #215DB5;
+    background: #FFFFFF;
+    border: 1px solid #FAFAFA;
+}

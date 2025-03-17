@@ -1,8 +1,12 @@
+import Banner from "../../Components/Home/Banner/Banner";
+import ExploreMore from "../../Components/Home/ExploreMore/ExploreMore";
+
 const Home = () => {
   return (
-    <div>
-      <h1>Home</h1>
-    </div>
+    <>
+      <Banner />
+      <ExploreMore />
+    </>
   );
 };
 export default Home;

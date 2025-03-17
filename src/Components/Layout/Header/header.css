@@ -1,0 +1,24 @@
+header.header {
+    padding: 22px 0px;
+    background: #FAFAFA;
+}
+
+header.header .container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+header nav ul.nav-list {
+    display: flex;
+    align-items: center;
+    gap: 40px;
+}
+
+header nav ul.nav-list li a {
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 100%;
+    text-decoration: none;
+    color: #6B7280;
+}
