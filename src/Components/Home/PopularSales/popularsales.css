@@ -1,0 +1,33 @@
+.popular-sales-ui {
+    padding: 100px 0px;
+}
+
+.rv-product-list {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    gap: 80px 40px;
+}
+
+.rv-product-item {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.rv-product-item .rv-product-image {
+    width: 100%;
+    height: 345px;
+}
+
+.rv-product-item .rv-product-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 10px;
+}
+
+.rv-product-item .rv-product-content {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}

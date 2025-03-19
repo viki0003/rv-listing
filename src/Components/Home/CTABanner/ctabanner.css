@@ -1,0 +1,55 @@
+.cta-ui {
+  background-image: url("/src/Assets/Images/Home/footer-banner.png");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  height: 515px;
+  display: flex;
+  align-items: center;
+  padding: 48px;
+  border-radius: 10px;
+  margin-bottom: 90px;
+}
+
+.cta-ui .cta-content {
+  display: flex;
+  flex-direction: column;
+  gap: 11px;
+}
+
+.cta-ui .cta-content h2 {
+  margin: 0;
+  font-family: Roboto;
+  font-weight: 400;
+  font-size: 40px;
+  line-height: 100%;
+  color: #fff;
+}
+
+.cta-ui .cta-content p {
+  margin: 0;
+  font-family: Roboto;
+  font-weight: 300;
+  font-size: 20px;
+  line-height: 100%;
+  color: #fff;
+}
+
+.cta-ui .cta-content a {
+  width: fit-content;
+  border-radius: 10px;
+  border-width: 1px;
+  gap: 16px;
+  padding: 12px 30px;
+  display: flex;
+  align-items: center;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 100%;
+  text-transform: uppercase;
+  text-decoration: none;
+  color: #215db5;
+  background: #ffffff;
+  border: 1px solid #fafafa;
+  margin-top: 30px;
+}

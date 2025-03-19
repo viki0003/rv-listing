@@ -1,0 +1,16 @@
+.brands-list {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 56px;
+}
+
+.brands-list img {
+    width: 80px;
+    height: 80px;
+    object-fit: contain;
+}
+
+.brands {
+    margin-bottom: 100px;
+}
