@@ -1,0 +1,162 @@
+footer {
+  background: #f9fafb;
+  padding: 62px 72px 15px 72px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 50px;
+}
+
+footer .ftr-ui {
+  display: flex;
+  gap: 150px;
+  width: 100%;
+  justify-content: space-between;
+}
+
+footer .ftr-ui h5 {
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 100%;
+  text-transform: uppercase;
+  margin-bottom: 16px;
+  margin-top: 0;
+}
+
+footer .ftr-ui .ftr-links {
+  display: flex;
+  max-width: 600px;
+  width: 100%;
+  gap: 75px;
+}
+
+footer .ftr-ui .ftr-social-col {
+  max-width: 550px;
+  width: 100%;
+}
+
+footer .ftr-ui .ftr-links .ftr-links-col {
+  width: 100%;
+}
+
+footer .ftr-ui .ftr-links .ftr-links-col ul.ftr-list {
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 100%;
+  color: #6b7280;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+footer .ftr-ui .ftr-links .ftr-links-col ul.ftr-list li a {
+  color: #6b7280;
+  text-decoration: none;
+  letter-spacing: 0.5px;
+}
+
+.ftr-social-pltfrm {
+  display: flex;
+  justify-content: space-between;
+}
+
+.ftr-social-pltfrm .ftr-social-icons .social-icons-list {
+  display: flex;
+  gap: 16px;
+}
+
+.platform-list .pl-icons {
+  display: flex;
+  gap: 16px;
+}
+
+.ftr-newsletter {
+  margin-top: 40px;
+}
+
+.ftr-newsletter .newsletter-ui {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.ftr-newsletter .newsletter-ui p {
+  margin-top: 0;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 100%;
+  color: #6b7280;
+  letter-spacing: 0.5px;
+}
+
+.ftr-newsletter .newsletter-ui p a {
+  color: #215db5;
+  text-underline-offset: 2px;
+}
+
+footer .ftr-privacy-links {
+  margin-top: 35px;
+}
+
+footer .ftr-privacy-links ul.privacy-list {
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 100%;
+  text-decoration-style: solid;
+  display: flex;
+  flex-wrap: wrap;
+  max-width: 400px;
+  justify-content: center;
+  gap: 16px;
+}
+
+footer .ftr-privacy-links ul.privacy-list li.pl-item a {
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 100%;
+  text-decoration: underline;
+  text-decoration-style: solid;
+  color: #6b7280;
+  letter-spacing: 0.5px;
+  text-underline-offset: 2px;
+}
+
+footer .copyright-text {
+  font-family: Roboto;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 100%;
+  letter-spacing: 0.5px;
+  color: #6b7280;
+}
+
+.ftr-newsletter .newsletter-ui .newsletter-form {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.ftr-newsletter .newsletter-ui .newsletter-form input {
+    max-width: 412px;
+    width: 100%;
+    border: 1px solid #9CA3AF;
+    padding: 13px 16px;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 100%;
+    letter-spacing: 0.5px;
+    color: #6B7280;
+}
+
+.ftr-newsletter .newsletter-ui .newsletter-form button {
+    padding: 13px 30px;
+    background: #215DB5;
+    color: #fff;
+    border: 1px solid #215DB5;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 100%;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
