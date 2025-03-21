@@ -1,0 +1,24 @@
+.category-filter {
+    padding: 20px 0px;
+}
+
+.category-filter ul.cf-list {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 36px;
+}
+
+.category-filter ul.cf-list li.cf-list-item {
+    font-family: Roboto;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 100%;
+    color: #374151;
+}
+
+.category-filter ul.cf-list li.cf-list-item.active {
+    padding: 4px 10px;
+    background: #215DB5;
+    color: #fff;
+}
