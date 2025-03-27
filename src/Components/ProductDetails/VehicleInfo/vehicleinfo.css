@@ -1,0 +1,15 @@
+
+.vehicle-info-container{
+    display: flex;
+    gap: 20px;
+    margin-top: 20px;
+}
+
+.vehicle-info-container .vehicle-info{
+    width: 100%;
+}
+
+.vehicle-info-container .empty-space{
+    width: 100%;
+}
+   

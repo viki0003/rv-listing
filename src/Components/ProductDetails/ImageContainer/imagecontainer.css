@@ -1,12 +1,17 @@
 .gallery-container {
-    display: flex;
+    display: flex
+;
     flex-direction: column;
+    justify-content: center;
     align-items: center;
     width: 100%;
-    max-width: 600px;
-    margin: auto;
+    max-width: 650px;
+    /* margin: auto; */
     padding: 20px;
 }
+
+
+
 
 .image-wrapper {
     position: relative;
@@ -54,15 +59,15 @@
 }
 
 .thumbnail {
-    max-width: 104px;
-    max-height: 104px;
+    max-width: 112px;
+    max-height: 112px;
     opacity: 0.6;
     border-radius: 4px;
     object-fit: cover;
     border-radius: 5px;
     cursor: pointer;
     border: 2px solid transparent;
-    transition: border 0.3s ease;
+    transition: border 0.3sease;
 }
 
 .thumbnail.active {
