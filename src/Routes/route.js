@@ -1,18 +1,22 @@
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Layout from "../Components/Layout/layout";
 import Home from "../Pages/Home";
 import Products from "../Pages/Products";
+import ProductDetail from "../Components/ProductsListing/ProductList/ProductDetail";
+import PD from "../Pages/PD";
 
 const Routing = () => {
   return (
-    <BrowserRouter>
+    <Router>
       <Routes>
         <Route element={<Layout />}>
           <Route path="/" element={<Home />} />
           <Route path="/products" element={<Products />} />
+          <Route path="/product/:id" element={<ProductDetail />} />
+          <Route path="/productsDetail" element={<PD />} />
         </Route>
       </Routes>
-    </BrowserRouter>
+    </Router>
   );
 };
 
