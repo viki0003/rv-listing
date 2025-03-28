@@ -51,3 +51,10 @@
     background: #FFFFFF;
     border: 1px solid #FAFAFA;
 }
+
+@media (max-width: 768px) {
+    .home-banner .container{
+        display:none;
+    }
+}
+

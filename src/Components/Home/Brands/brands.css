@@ -14,3 +14,16 @@
 .brands {
     margin-bottom: 100px;
 }
+.brands .heading span.divider {
+    width: 132px;
+    height: 4px;
+    background: #374151;
+    display: block;
+    border-radius: 100px;
+}
+
+@media screen and (max-width:768px){
+    .brands{
+        display: none;
+    }
+}

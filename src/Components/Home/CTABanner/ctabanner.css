@@ -53,3 +53,36 @@
   border: 1px solid #fafafa;
   margin-top: 30px;
 }
+
+@media screen and (max-width:768px) {
+  .cta-ui{
+    height: auto;
+    padding: 24px;
+  }
+  .cta-ui .cta-content a {
+    width: fit-content;
+    border-radius: 10px;
+    border-width: 1px;
+    gap: 16px;
+    padding: 8px 20px;
+    display: flex
+;
+    align-items: center;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 100%;
+    text-transform: uppercase;
+    text-decoration: none;
+    color: #215db5;
+    background: #ffffff;
+    border: 1px solid #fafafa;
+    margin-top: 30px;
+}
+.cta-ui .cta-content h2 {
+  font-size: 30px;
+}
+.cta-ui .cta-content p{
+  font-size: 16px;
+}
+
+}

@@ -1,0 +1,26 @@
+.responsive-brands {
+    width: 100%;
+    overflow: hidden;
+  }
+  
+  .responsive-container {
+    width: 100%;
+  }
+  
+ 
+.responsive-brands-list {
+    display: flex;
+    overflow-x: auto;
+    scroll-behavior: smooth;
+    white-space: nowrap;
+    gap: 34px;
+    padding: 20px;
+}
+  
+.responsive-brands-list img {
+    max-width: 60px;
+    width: 100%;
+    height: auto;
+    flex-shrink: 0;
+}
+

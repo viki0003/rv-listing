@@ -4,9 +4,11 @@ import FH from "../../../Assets/Images/Home/fifth-wheel.png";
 import VC from "../../../Assets/Images/Home/van-camper.png";
 import "./exploremore.css";
 import { Link } from "react-router";
+import Categories from "../Categories/Categories";
 
 const ExploreMore = () => {
   return (
+    <>
     <div className="expore-more-ui">
       <div className="container">
         <div className="heading">
@@ -35,6 +37,8 @@ const ExploreMore = () => {
         </div>
       </div>
     </div>
+    <span className='responsive-categories'><Categories/></span>
+    </>
   );
 };
 
