@@ -2,17 +2,21 @@ import React from "react";
 import "./productcard.css";
 import ImageContainer from "../ImageContainer/ImageContainer";
 
-const ProductCard = () => {
+const ProductCard = ({ product }) => {
   return (
-    <>
-      <div className="product-card-container">
+    <div className="product-card-container">
+      <div className="container">
         <div className="product-card-image">
-          <ImageContainer />
+          <ImageContainer product={product} />
         </div>
         <div className="product-details-container">
           <div className="pricing">
             <div>
-              <span className="price">$15.50</span>
+              <span className="price">
+                {product.sale_price
+                  ? `$${product.sale_price}`
+                  : "Call for Price"}
+              </span>
               <span className="original-price">$31.00</span>
               <span className="discount">-50%</span>
             </div>
@@ -22,7 +26,9 @@ const ProductCard = () => {
               </span>
             </div>
           </div>
-          <p className="cta-text">Do the Math & Save call today! (951)634-8124</p>
+          <p className="cta-text">
+            Do the Math & Save call today! (951)634-8124
+          </p>
 
           <div className="buttons">
             <button className="primary">Get Today’s Price</button>
@@ -43,7 +49,7 @@ const ProductCard = () => {
           </ul>
         </div>
       </div>
-    </>
+    </div>
   );
 };
 
