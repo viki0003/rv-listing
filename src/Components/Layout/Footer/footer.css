@@ -160,3 +160,9 @@ footer .copyright-text {
     letter-spacing: 1px;
     text-transform: uppercase;
 }
+
+@media screen and (max-width:915px){
+    footer{
+      display:none;
+    }
+}

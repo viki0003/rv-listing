@@ -1,0 +1,63 @@
+.responsive-product-card {
+    width: 100%;
+    
+    padding: 15px;
+    border-radius: 8px;
+    
+    display: flex;
+    flex-direction: column;
+    gap:20px;
+
+  }
+  
+  .responsive-title {
+    font-size: 18px;
+    font-weight: bold;
+  }
+  
+  .responsive-price {
+    font-size: 24px;
+    font-weight: bold;
+    margin-top: 5px;
+  }
+  
+  .responsive-rating {
+    display: flex;
+    align-items: center;
+    margin-top: 5px;
+  }
+  
+  .responsive-star {
+    color: gold;
+    margin-right: 5px;
+  }
+  
+  .responsive-details-title {
+    font-size: 16px;
+    font-weight: bold;
+    margin-top: 10px;
+  }
+  
+  .responsive-description {
+    overflow: hidden;
+    max-height: 50px;
+    transition: max-height 0.3s ease-in-out;
+  }
+  
+  .responsive-description.responsive-expanded {
+    max-height: 200px;
+  }
+  
+  .responsive-read-more {
+    color: blue;
+    cursor: pointer;
+    text-decoration: underline;
+    display: block;
+    margin-top: 5px;
+  }
+  
+  .responsive-pricing-container{
+    display:flex;
+    flex-direction: row;
+    justify-content: space-between;
+  }

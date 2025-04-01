@@ -44,3 +44,20 @@ h2 {
 hr{
     width: 70%;
 }
+
+@media screen and (max-width: 768px) {
+    .wrapper .container {
+        padding:0;
+        box-shadow:none;
+        
+    }
+    .vehicle-details {
+        width:100%;
+    }
+    .wrapper {
+        font-family: Arial, sans-serif;
+        margin:0;
+        padding: 0 20px;
+        background-color: #f8f8f8;
+    }
+}

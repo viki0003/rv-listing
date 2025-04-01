@@ -73,3 +73,17 @@ a.explore-more-item .em-text span {
     display: block;
     border-radius: 100px;
 }
+
+.responsive-categories{
+    display:none;
+}
+
+@media screen and (max-width:768px) {
+    .responsive-categories{
+        display:block;
+    }
+    .expore-more-ui{
+        display:none;
+    }
+    
+}

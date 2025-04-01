@@ -64,3 +64,81 @@
 .all-products-ui {
     margin-bottom: 110px;
 }
+.responsive-pd-header {
+    display: none;
+    
+}
+
+.responsive-pd-back-arrow {
+    font-size: 20px;
+    cursor: pointer;
+}
+.responsive-pd-title {
+    font-size: 24px;
+    font-weight: bold;
+}
+.responsive-pd-filter-icon {
+    font-size: 20px;
+    cursor: pointer;
+}
+.filter-buttons{
+    display:flex;
+    flex-direction: row !important;
+    gap: 10px;
+}
+.filter-buttons button{
+    padding:8px !important;
+    
+    cursor: pointer;
+    font-size: 14px !important;
+    font-weight: 600;
+    line-height: 100%;
+    text-transform: uppercase;
+    
+    border-radius: 5px;
+}
+.filter-buttons .vic-info{
+    padding:8px !important;
+    margin:0;
+    cursor: pointer;
+    font-size: 14px !important;
+    font-weight: 600;
+    line-height: 100%;
+    text-transform: uppercase;
+    
+    border-radius: 5px;
+}
+
+.responsive-filter-dialog{
+    width: 80vw;
+}
+
+
+
+@media screen and (max-width: 914px) {
+    .filter-aside{
+        display:none;
+    }
+    .all-products .all-products-list {
+        grid-template-columns: 1fr 1fr;
+    }
+    .all-products-ui .products-result .product-sort-by {
+        display: none;
+    }
+    .responsive-pd-header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 20px;
+        
+    }
+    
+}
+
+@media screen and (max-width: 600px) {
+
+    .responsive-filter-dialog{
+        width: 100vw;
+    }
+    
+}

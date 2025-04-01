@@ -22,3 +22,10 @@
     background: #215DB5;
     color: #fff;
 }
+
+@media screen and (max-width: 768px) {
+    .category-filter {
+        display:none;
+    }
+    
+}

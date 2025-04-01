@@ -1,21 +1,16 @@
-import "./brands.css";
+
 import B1 from "../../../Assets/Images/Home/Brands/chanel.png";
 import B2 from "../../../Assets/Images/Home/Brands/dior.png";
 import B3 from "../../../Assets/Images/Home/Brands/d-g.png";
 import B4 from "../../../Assets/Images/Home/Brands/gucci.png";
 import B5 from "../../../Assets/Images/Home/Brands/zara.png";
 import B6 from "../../../Assets/Images/Home/Brands/versace.png";
-import ResponsiveBrands from "../ResponsiveBrands/ResponsiveBrands";
-const Brands = () => {
+import './responsivebrands.css';
+const ResponsiveBrands = () => {
   return (
-    <>
-    <div className="brands">
-      <div className="container">
-        <div className="heading">
-          <h2>Brands For You</h2>
-          <span className="divider"></span>
-        </div>
-        <div className="brands-list">
+    <div className="responsive-brands">
+      <div className="responsive-container">
+        <div className="responsive-brands-list">
             <img src={B1} alt="brands"/>
             <img src={B3} alt="brands"/>
             <img src={B2} alt="brands"/>
@@ -25,8 +20,6 @@ const Brands = () => {
         </div>
       </div>
     </div>
-    <ResponsiveBrands/>
-    </>
   );
 };
-export default Brands;
+export default ResponsiveBrands;

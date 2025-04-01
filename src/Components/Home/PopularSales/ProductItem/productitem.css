@@ -69,3 +69,49 @@
   text-underline-offset: 1.5px;
   text-decoration: underline;
 }
+
+@media (max-width: 768px) {
+  .rv-product-item{
+    position: relative;
+  }
+  .rv-product-item .rv-product-content span.stock-id {
+    font-size: 10px;
+    line-height: 18px;
+  }
+
+  .rv-product-item .rv-product-content .product-text {
+    font-size: 12px;
+    line-height: 20px;
+  }
+
+  .rv-product-item .rv-product-content .rv-product-price p {
+    font-size: 14px;
+  }
+
+  .rv-product-item .rv-product-content .rv-product-price span {
+    font-size: 12px;
+  }
+
+  .rv-product-item .rv-product-content .rv-product-specs {
+    gap: 10px;
+  }
+
+  .rv-product-specs .rv-spec-item p {
+    font-size: 10px;
+    line-height: 18px;
+  }
+
+  .rv-product-specs .rv-spec-item span {
+    font-size: 10px;
+    line-height: 18px;
+  }
+  
+    .rv-product-item .rv-product-content span.stock-id {
+        font-size: 16px;
+        line-height: 18px;
+        position: absolute;
+        left: 5%;
+        top: 5%;
+        color: white;
+    }
+}
