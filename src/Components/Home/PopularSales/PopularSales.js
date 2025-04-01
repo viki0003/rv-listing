@@ -19,10 +19,16 @@ const PopularSales = () => {
           }
         );
     
-        console.log("API Response:", response.data); // Log the response
+         // Log the response
     
         // Extract the actual array
-        setProducts(response.data.data || []); 
+        const updatedProducts = (response.data.data || []).map(product => ({
+          ...product,
+          vehicle_length: Number((Math.random() * (70 - 20) + 20).toFixed(2)) // Random length between 20 to 70 feet
+        }));
+        setProducts([...updatedProducts]);
+        // Extract the actual array
+        
       } catch (err) {
         console.error("Error fetching data:", err);
         setError("Failed to fetch products.");
@@ -30,9 +36,11 @@ const PopularSales = () => {
         setLoading(false);
       }
     };
+    
 
     fetchProducts();
   }, []);
+  console.log(products);
 
   return (
     <div className="popular-sales-ui">

@@ -13,6 +13,8 @@
     overflow-x: auto;
     scroll-behavior: smooth;
     white-space: nowrap;
+    justify-content: center;
+    align-items: center;
     gap: 34px;
     padding: 20px;
 }

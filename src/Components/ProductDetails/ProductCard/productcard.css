@@ -116,3 +116,58 @@
 .product-details-container .features li {
   margin: 5px 0;
 }
+
+.responsive-vehicle-info {
+  display: none;
+}
+
+
+@media screen and (max-width: 768px) {
+  .product-card-container .container {
+    flex-direction: column;
+    gap: 20px;
+    
+  }
+  .product-card-image {
+    width: 100%;
+  }
+  .product-details-container {
+    width: 100%;
+  }
+  .product-details-container .pricing {
+    flex-direction: column;
+    gap: 10px;
+  }
+  .product-details-container .pricing div {
+    flex-direction: column;
+    gap: 5px;
+  }
+  .product-details-container .cta-text {
+    font-size: 16px;
+  }
+  .product-details-container .buttons {
+    flex-direction: column;
+    gap: 10px;
+  }
+  .product-details-container button {
+    font-size: 20px;
+  }
+  .product-details-container .description {
+    text-align: left;
+  }
+  .product-details-container .features {
+    text-align: left;
+  }
+  .product-details-container .features li {
+    margin: 5px 0;
+  }
+  .product-card-container .container {
+    margin-top: 20px;
+}
+.product-details-container{
+  display:none;
+}
+.responsive-vehicle-info {
+  display: flex;
+}
+}

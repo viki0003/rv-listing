@@ -34,3 +34,10 @@
     flex-direction: column;
     gap: 18px;
 }
+
+@media screen and (max-width: 768px) {
+  .pl-banner{
+    display:none;
+  }
+}
+  

@@ -11,7 +11,7 @@
     max-width: 100%;
     height: 600px;
     display: flex
-;
+; 
     justify-content: center;
     align-items: center;
     overflow: hidden;
@@ -46,14 +46,14 @@
 
 .gallery-container .p-carousel.p-component .p-carousel-content .p-carousel-container button.p-carousel-prev {
     position: absolute;
-    left: 32px;
+    left: 5%;
     z-index: 99999;
     background: #FFFFFF;
 }
 
 .gallery-container .p-carousel.p-component .p-carousel-content .p-carousel-container button.p-carousel-next {
     position: absolute;
-    right: 32px;
+    right: 5%;
     z-index: 99999;
     background: #FFFFFF;
 }
@@ -65,11 +65,26 @@
     border: 1px solid #17696A;
     opacity: 60%;
     border-radius: 4px;
-    object-fit: cover;
+    object-fit:cover;
     cursor: pointer;
     transition: transform 0.2s ease-in-out;
 }
 
 .gallery-container .thumbnails img.thumbnail.active {
     opacity: 100%;
+}
+
+@media (max-width: 768px) {
+    .gallery-container {
+        width: 100%;
+    }
+    .image-wrapper {
+        max-height: 400px;
+        height:100%;
+    }
+    .gallery-container .thumbnails img.thumbnail {
+        width: 64px;
+        height: 64px;
+        
+    }
 }

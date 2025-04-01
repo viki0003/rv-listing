@@ -1,0 +1,26 @@
+.form-iframe {
+     
+        border:none !important;
+        border-radius:16px;
+        width: 60vw;
+        height:100vh;
+        position: relative;
+        z-index:1;
+        box-shadow: none !important;
+    outline: none !important;
+    background: transparent !important;
+   
+}
+
+div#_builder-form, iframe {
+    box-shadow: none !important;
+    border: none !important;
+    outline: none !important;
+}
+
+@media  screen and (max-width:600px){
+    .form-iframe{
+        width: 95vw !important;
+    }
+    
+}

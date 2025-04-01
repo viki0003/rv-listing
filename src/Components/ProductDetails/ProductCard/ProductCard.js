@@ -1,8 +1,13 @@
 import React from "react";
+import { Button } from "primereact/button";
+import { Dialog } from "primereact/dialog";
+import TPForm from "../../TPForm/TPForm";
 import "./productcard.css";
 import ImageContainer from "../ImageContainer/ImageContainer";
+import ResponsivePDCard from "./ResponsivePDCard/ResponsivePDCard";
 
 const ProductCard = ({ product }) => {
+  const [visible, setVisible] = React.useState(false);
   return (
     <div className="product-card-container">
       <div className="container">
@@ -31,7 +36,10 @@ const ProductCard = ({ product }) => {
           </p>
 
           <div className="buttons">
-            <button className="primary">Get Today’s Price</button>
+            <Button label="Get Today's Price" className="primary" onClick={() => setVisible(true)} />
+                        <Dialog  visible={visible}  onHide={() => {if (!visible) return; setVisible(false); }}>
+                            <TPForm/>
+                        </Dialog>
             <button className="secondary">Value My Trade</button>
           </div>
           <button className="info">Request More Info</button>
@@ -49,6 +57,10 @@ const ProductCard = ({ product }) => {
           </ul>
         </div>
       </div>
+      <div className="responsive-vehicle-info">
+      <ResponsivePDCard/>
+      </div>
+      
     </div>
   );
 };

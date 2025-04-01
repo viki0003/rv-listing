@@ -3,7 +3,7 @@ import { Slider } from "primereact/slider";
 import { Checkbox } from "primereact/checkbox";
 import './filter.css'
 
-const ProductFilter = () => {
+const ProductFilter = ({value, setValue}) => {
   const filterList = [
     { name: "Lorem", key: "A" },
     { name: "Lorem", key: "M" },
@@ -11,7 +11,7 @@ const ProductFilter = () => {
     { name: "Lorem", key: "R" },
   ];
   const [selectedCategories, setSelectedCategories] = useState([filterList[1]]);
-  const [value, setValue] = useState([20, 80]);
+  
   const onCategoryChange = (e) => {
     let _selectedCategories = [...selectedCategories];
 
@@ -27,11 +27,11 @@ const ProductFilter = () => {
     <div className="product-filter">
       <div className="pf-list">
         <div className="pf-list-item">
-          <h4>PRICES</h4>
+          <h4>LENGTH</h4>
           <div className="pf-range-filter">
             <div className="pf-range-term">
               <span>Range</span>
-              <p>$120 - $300</p>
+              <p>{value[0]} - {value[1]}</p>
             </div>
             <Slider
               value={value}
@@ -42,7 +42,7 @@ const ProductFilter = () => {
           </div>
         </div>
 
-        <div className="pf-list-item">
+        {/* <div className="pf-list-item">
           <h4>Filters</h4>
           <div className="pf-select-filter-list">
             {filterList.map((category) => {
@@ -136,7 +136,7 @@ const ProductFilter = () => {
               );
             })}
           </div>
-        </div>
+        </div> */}
       </div>
     </div>
   );

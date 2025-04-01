@@ -34,8 +34,9 @@
 }
 
 @media screen and (max-width:768px){
-    .popular-sales-ui{
-        /* display:none; */
+    .popular-sales-ui {
+        /* display: none; */
+        padding: 50px 0;
     }
     .rv-product-list {
         display: grid
@@ -48,12 +49,20 @@
         width: 100%;
         height: 245px;
     }
+    .popular-sales-ui .heading{
+        display:flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: left;
+    }
+    .popular-sales-ui .heading .divider{
+        display:none;
+    }
 }
 
 @media screen and (max-width:440px){
-    .popular-sales-ui{
-        /* display:none; */
-    }
+    
+
     .rv-product-list {
         display: grid
     ;
