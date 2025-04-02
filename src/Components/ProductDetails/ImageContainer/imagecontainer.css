@@ -28,9 +28,14 @@
     display: flex;
     gap: 5px;
     width: 100%;
-    justify-content: center;
+    justify-content: start;
+    overflow: auto;
+
   }
   
+  .gallery-container .p-carousel.p-component.p-carousel-horizontal {
+    width: 100%;
+}
   
   .thumbnail:hover {
     transform: scale(1.05);
