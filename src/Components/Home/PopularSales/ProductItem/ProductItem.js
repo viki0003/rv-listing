@@ -1,14 +1,49 @@
-import { Link } from "react-router";
+import { useEffect, useState } from "react";
+import { Link } from "react-router-dom"; // Fix: use react-router-dom
+import imageCompression from "browser-image-compression";
 import FloorPlanIcon from "../../../../Assets/Icons/FloorPlanIcon";
 import RVImage from "../../../../Assets/Images/Home/rv-image.png";
 import "./productitem.css";
 
+// Function to convert an image to WebP
+const convertToWebP = async (imageSrc) => {
+  try {
+    const response = await fetch(imageSrc);
+    const blob = await response.blob();
+    const file = new File([blob], "image.png", { type: blob.type });
+
+    const options = {
+      maxSizeMB: 1, // Adjust for performance
+      maxWidthOrHeight: 800, // Resize images
+      fileType: "image/webp", // Convert to WebP
+    };
+
+    const compressedFile = await imageCompression(file, options);
+    return URL.createObjectURL(compressedFile);
+  } catch (error) {
+    console.error("Error converting image to WebP:", error);
+    return imageSrc; // Return original image if conversion fails
+  }
+};
+
 const ProductItem = ({ product }) => {
-  const imageSrc = product.rv_pics && product.rv_pics.length > 0 ? product.rv_pics[0] : RVImage;
+  const [webpImage, setWebpImage] = useState(RVImage);
+
+  useEffect(() => {
+    const imageSrc = product.rv_pics && product.rv_pics.length > 0 ? product.rv_pics[0] : RVImage;
+
+    const processImage = async () => {
+      const convertedImage = await convertToWebP(imageSrc);
+      setWebpImage(convertedImage);
+    };
+
+    processImage();
+  }, [product.rv_pics]); // Re-run if product images change
+
   return (
     <Link to={`/product/${product.id}`} className="rv-product-item">
       <div className="rv-product-image">
-      <img src={imageSrc} alt="RV" />
+        <img src={webpImage} alt="RV" />
       </div>
       <div className="rv-product-content">
         <span className="stock-id">Stock #{product.stock_number || "N/A"}</span>
