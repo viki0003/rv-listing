@@ -27,7 +27,7 @@ const PDP = () => {
           }
         );
 
-        console.log("API Response:", response.data); // Debugging
+        // console.log("API Response:", response.data); // Debugging
 
         // ✅ Find the correct product from the API response
         const productData = response.data.data.find((item) => item.id === id);
@@ -48,7 +48,7 @@ const PDP = () => {
     fetchProductDetails();
   }, [id]);
 
-  if (loading) return <span className="loader-class"><ItemLoader/></span>;
+  if (loading) return <span className="loader-className"><ItemLoader/></span>;
   if (error) return <p className="error">{error}</p>;
 
   return (
