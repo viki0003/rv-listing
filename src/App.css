@@ -31,3 +31,7 @@ ul{
     margin: auto;
     padding: 0px 20px;
 }
+
+span.home-search-bar {
+  display: none;
+}
