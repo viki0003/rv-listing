@@ -10,7 +10,7 @@ const Header = () => {
       <header className="home-header">
         <div className="container">
           <Link to="/">
-            <img src={Logo} alt="Logo" width={75} />
+            <img src={Logo} alt="Logo" width={100} />
           </Link>
           {/* <div className="header-search-bar">
             <svg
@@ -45,12 +45,12 @@ const Header = () => {
               <li>
                 <Link to="/products">Shop By Category</Link>
               </li>
-              <li>
+              {/* <li>
                 <Link to="#">Deals & Services</Link>
               </li>
               <li>
                 <Link to="#">Find A Store</Link>
-              </li>
+              </li> */}
             </ul>
           </nav>
         </div>
