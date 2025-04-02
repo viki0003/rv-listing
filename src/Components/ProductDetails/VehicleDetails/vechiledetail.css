@@ -4,71 +4,97 @@
     padding: 0;
     background-color: #f8f8f8;
 }
-.wrapper .container {
-    
-        min-width: 623px;
-        background: #fff;
-        padding: 20px;
-        border-radius: 8px;
-        /* box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); */
-    
-}
-.vehicle-details .wrapper .container h2{
-font-weight: 700;
-font-size: 16px;
-line-height: 100%;
-letter-spacing: 0.2px;
 
+.wrapper .container {
+    max-width: 100%;
+    width: 100%;
+    background: #fff;
+    padding: 20px;
+    border-radius: 8px;
 }
+
+.vehicle-details .wrapper .container h2 {
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 100%;
+    letter-spacing: 0.2px;
+}
+
 h2 {
     color: #333;
 }
+
+/* Add horizontal scroll */
+.details-wrapper {
+    width: 100%;
+    overflow-x: auto; /* Enables horizontal scrolling */
+}
+
+/* Table styles */
 .details {
     width: 100%;
     border-collapse: collapse;
     margin-top: 10px;
+    min-width: 765px; /* Ensures table does not shrink */
+    white-space: nowrap; /* Prevents content from wrapping */
 }
+
 .details td {
     padding: 10px;
     border-bottom: 1px solid #ddd;
     color: #666;
 }
+
 .details td:first-child {
     font-weight: 400;
     font-size: 12px;
-    font-family:Lato;
+    font-family: Lato;
     color: #333;
     width: 30%;
 }
+
 .description {
     margin-top: 20px;
     color: #666;
 }
+
 .description ul {
     margin: 10px 0;
     padding-left: 20px;
 }
+
 .description ul li {
     margin-bottom: 5px;
 }
 
-hr{
+hr {
     width: 70%;
 }
 
+/* Responsive styles for smaller screens */
 @media screen and (max-width: 768px) {
     .wrapper .container {
-        padding:0;
-        box-shadow:none;
-        
+        padding: 0;
+        box-shadow: none;
+        overflow-x: auto; /* Ensures the container can scroll */
     }
+
     .vehicle-details {
-        width:100%;
+        width: 100%;
     }
+
     .wrapper {
         font-family: Arial, sans-serif;
         margin: 0;
         padding: 0 20px;
         background-color: #fff;
+    }
+
+    .details-wrapper {
+        overflow-x: auto; /* Ensures scrolling on mobile */
+    }
+
+    .details {
+        min-width: 765px; /* Prevents table from shrinking */
     }
 }
