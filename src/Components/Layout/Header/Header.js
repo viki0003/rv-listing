@@ -12,7 +12,7 @@ const Header = () => {
           <Link to="/">
             <img src={Logo} alt="Logo" />
           </Link>
-          <div className="header-search-bar">
+          {/* <div className="header-search-bar">
             <svg
               width="20"
               height="20"
@@ -34,12 +34,12 @@ const Header = () => {
                 strokeLinejoin="round"
               />
             </svg>
-            <input
+             <input
               type="text"
               placeholder="Search for an item"
               className="header-search-input"
-            />
-          </div>
+            /> 
+          </div> */}
           <nav>
             <ul className="nav-list">
               <li>

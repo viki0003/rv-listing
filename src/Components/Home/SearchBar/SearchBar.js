@@ -45,12 +45,10 @@ const SearchBar = () => {
     const location = useLocation();
     const isHomePage = location.pathname === "/";
     const [items, setItems] = useState([
-        "Apple",
-        "Banana",
-        "Mango",
-        "Orange",
-        "Pineapple",
-        "Strawberry"
+        "Keystone",
+        "RV",
+        "T90",
+        "Traveller",
     ]);
     const removeItem = (item) => {
         const updatedItems = items.filter((i) => i !== item);
