@@ -10,7 +10,7 @@ const Header = () => {
       <header className="home-header">
         <div className="container">
           <Link to="/">
-            <img src={Logo} alt="Logo" />
+            <img src={Logo} alt="Logo" width={75} />
           </Link>
           {/* <div className="header-search-bar">
             <svg
