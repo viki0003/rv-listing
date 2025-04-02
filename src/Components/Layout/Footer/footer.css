@@ -163,6 +163,6 @@ footer .copyright-text {
 
 @media screen and (max-width:915px){
     footer{
-      display:none;
+      display:none !important;
     }
 }
