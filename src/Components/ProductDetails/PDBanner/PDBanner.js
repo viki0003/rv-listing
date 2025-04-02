@@ -8,10 +8,9 @@ const PDBanner = ({ product }) => {
         <div className="container">
           <div className="pl-bg">
             <div className="pl-bg-content">
-              <h2>Ladies Top</h2>
+              <h2>{product.make}</h2>
               <p>
-                Slash Sales begins in April. Get up to 80% Discount on all
-                products Read More
+                {product.trim_model}
               </p>
             </div>
           </div>

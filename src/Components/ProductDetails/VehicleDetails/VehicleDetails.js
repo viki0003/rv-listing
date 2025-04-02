@@ -11,27 +11,27 @@ const VehicleDetails = ({ product }) => {
         <table className="details">
           <tbody>
             <tr>
-              <td>Stock</td>
+              <td className="td-name">Stock</td>
               <td>{product.stock || "N/A"}</td>
-              <td>VIN</td>
+              <td className="td-name">VIN</td>
               <td>{product.vin || "N/A"}</td>
             </tr>
             <tr>
-              <td>Miles</td>
+              <td className="td-name">Miles</td>
               <td>{product.miles || "N/A"}</td>
-              <td>Length</td>
+              <td className="td-name">Length</td>
               <td>{product.length ? `${product.length} ft` : "N/A"}</td>
             </tr>
             <tr>
-              <td>Interior Height</td>
+              <td className="td-name">Interior Height</td>
               <td>{product.interior_height ? `${product.interior_height} ft` : "N/A"}</td>
-              <td>Height</td>
+              <td className="td-name">Height</td>
               <td>{product.height ? `${product.height} ft` : "N/A"}</td>
             </tr>
             <tr>
-              <td>Fuel Type</td>
+              <td className="td-name">Fuel Type</td>
               <td>{product.fuel_type || "N/A"}</td>
-              <td>Engine</td>
+              <td className="td-name">Engine</td>
               <td>{product.engine || "N/A"}</td>
             </tr>
           </tbody>

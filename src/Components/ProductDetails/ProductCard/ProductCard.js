@@ -37,7 +37,7 @@ const ProductCard = ({ product }) => {
 
           <div className="buttons">
             <Button label="Get Today's Price" className="primary" onClick={() => setVisible(true)} />
-                        <Dialog  visible={visible}  onHide={() => {if (!visible) return; setVisible(false); }}>
+                        <Dialog className="price-form-ui"  visible={visible}  onHide={() => {if (!visible) return; setVisible(false); }}>
                             <TPForm/>
                         </Dialog>
             <button className="secondary">Value My Trade</button>

@@ -2,7 +2,8 @@ import { useEffect, useState } from "react";
 import { Link } from "react-router-dom"; // Fix: use react-router-dom
 import imageCompression from "browser-image-compression";
 import FloorPlanIcon from "../../../../Assets/Icons/FloorPlanIcon";
-import RVImage from "../../../../Assets/Images/Home/rv-image.png";
+// import RVImage from "../../../../Assets/Images/Home/rv-image.png";
+import PlaceholderImage from "../../../../Assets/Images/Home/placeholder.jpg"
 import "./productitem.css";
 
 // Function to convert an image to WebP
@@ -27,10 +28,10 @@ const convertToWebP = async (imageSrc) => {
 };
 
 const ProductItem = ({ product }) => {
-  const [webpImage, setWebpImage] = useState(RVImage);
+  const [webpImage, setWebpImage] = useState(PlaceholderImage);
 
   useEffect(() => {
-    const imageSrc = product.rv_pics && product.rv_pics.length > 0 ? product.rv_pics[0] : RVImage;
+    const imageSrc = product.rv_pics && product.rv_pics.length > 0 ? product.rv_pics[0] : PlaceholderImage;
 
     const processImage = async () => {
       const convertedImage = await convertToWebP(imageSrc);

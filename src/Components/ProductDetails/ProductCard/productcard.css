@@ -121,6 +121,15 @@
   display: none;
 }
 
+.price-form-ui {
+  max-width: 650px;
+  width: 100%;
+}
+
+.price-form-ui .p-dialog-header {
+  padding-bottom: 0;
+}
+
 
 @media screen and (max-width: 768px) {
   .product-card-container .container {
