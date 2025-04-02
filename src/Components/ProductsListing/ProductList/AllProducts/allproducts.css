@@ -109,6 +109,46 @@
     border-radius: 5px;
 }
 
+.pagination-controls {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    margin-top: 20px;
+  }
+  
+  .pagination-controls button {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 8px 12px;
+    border-radius: 5px;
+    font-size:12px;
+
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+
+  .pagination-controls span{
+    font-weight: 400;
+    font-size: 12px;
+  }
+  
+  .pagination-controls button:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+  }
+  
+  .pagination-controls button:hover:not(:disabled) {
+    background-color: #0056b3;
+  }
+  
+  .pagination-controls span {
+    font-size: 16px;
+    font-weight: bold;
+  }
+  
+
 .responsive-filter-dialog{
     width: 80vw;
 }

@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import axios from "axios";
 import RVImage from "../../../Assets/Images/Products/category-banner.png";
+import Loader from "../../Loader";
 
 const ProductDetail = () => {
   const { id } = useParams(); // Get product ID from URL
@@ -41,7 +42,7 @@ const ProductDetail = () => {
     fetchProductDetails();
   }, [id]);
 
-  if (loading) return <p>Loading...</p>;
+  if (loading) return <Loader/>;
   if (error) return <p className="error">{error}</p>;
 
   return (
