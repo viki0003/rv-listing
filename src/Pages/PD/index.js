@@ -6,6 +6,8 @@ import ProductCard from "../../Components/ProductDetails/ProductCard/ProductCard
 import VehicleInfo from "../../Components/ProductDetails/VehicleInfo/VehicleInfo";
 import PDBanner from "../../Components/ProductDetails/PDBanner/PDBanner";
 
+import ItemLoader from "../../Components/ItemLoader";
+
 const PDP = () => {
   const { id } = useParams(); // Get product ID from URL
   const [product, setProduct] = useState(null);
@@ -46,7 +48,7 @@ const PDP = () => {
     fetchProductDetails();
   }, [id]);
 
-  if (loading) return <p>Loading...</p>;
+  if (loading) return <span className="loader-class"><ItemLoader/></span>;
   if (error) return <p className="error">{error}</p>;
 
   return (

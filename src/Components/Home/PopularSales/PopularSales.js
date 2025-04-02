@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import "./popularsales.css";
 import ProductItem from "./ProductItem/ProductItem";
+import Loader from "../../Loader";
 const PopularSales = () => {
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(true); // Add loading state
@@ -50,7 +51,7 @@ const PopularSales = () => {
           <span className="divider"></span>
         </div>
         <div className="rv-product-list">
-          {loading && <p>Loading products...</p>}
+          {loading && <Loader/>}
           {error && <p>{error}</p>}
           {!loading && !error && products.length > 0 ? (
             products.map((product) => (

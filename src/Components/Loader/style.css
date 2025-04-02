@@ -1,0 +1,51 @@
+.loader {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    transform: translate(50%, 50%);
+  }
+  
+  .avatar {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    background-color: #d1d5db; /* Equivalent to bg-gray-300 */
+    animation: pulse 1.5s infinite ease-in-out;
+  }
+  
+  .text {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+  
+  .line {
+    background-color: #d1d5db;
+    animation: pulse 1.5s infinite ease-in-out;
+    border-radius: 9999px; /* Equivalent to rounded-full */
+  }
+  
+  .short {
+    width: 112px; /* Equivalent to w-28 */
+    height: 20px; /* Equivalent to h-5 */
+  }
+  
+  .long {
+    width: 144px; /* Equivalent to w-36 */
+    height: 20px; /* Equivalent to h-5 */
+  }
+  
+  @keyframes pulse {
+    0% {
+      opacity: 1;
+    }
+    50% {
+      opacity: 0.5;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
+  

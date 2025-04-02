@@ -65,8 +65,7 @@ const Brands = () => {
             ))}
           </div>
         </div>
-      </div>
-      <ResponsiveBrands />
+      </div>      
     </>
   );
 };

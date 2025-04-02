@@ -20,7 +20,14 @@
     font-weight: bold;
     margin-top: 5px;
   }
-  
+  .responsive-details-heading{
+    font-family: Satoshi;
+font-weight: 700;
+font-size: 16px;
+line-height: 100%;
+letter-spacing: 0.2px;
+
+  }
   .responsive-rating {
     display: flex;
     align-items: center;
