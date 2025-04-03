@@ -14,7 +14,6 @@ header.home-header .container {
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
-    max-width: 100%;
     margin: auto;
     padding: 0px 20px;
 }
