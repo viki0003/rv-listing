@@ -2,6 +2,7 @@ import React from "react";
 import { useSearchParams } from "react-router-dom";
 import { useProducts } from "../../../ApiContext/ProductApi";
 import ProductItem from "../../../Components/Home/PopularSales/ProductItem/ProductItem";
+import NotFound from "../../NotFound";
 
 const SearchPage = () => {
     const { products } = useProducts();
@@ -31,7 +32,7 @@ const SearchPage = () => {
                         ))}
                     </div>
                 ) : (
-                    <p>No products found.</p>
+                    <NotFound/>
                 )}
             </div>
         </div>

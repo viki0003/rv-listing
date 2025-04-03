@@ -165,6 +165,9 @@
     font-size: 25px;
     color: #1F2937;
 }
+.all-products-list {
+    width: 100%;
+}
 
 @media screen and (max-width: 914px) {
     .filter-aside{
@@ -192,4 +195,9 @@
         width: 100vw;
     }
     
+}
+@media screen and (max-width: 450px) {
+.all-products .all-products-list {
+    grid-template-columns: 1fr;
+}
 }
