@@ -5,11 +5,16 @@ import { useProducts } from "../../../ApiContext/ProductApi";
 import Logo from "../../../Assets/Images/Home/RVLogo.png";
 import "./header.css";
 import SearchIcon from "../../../Assets/Icons/SearchIcon";
+import { RxHamburgerMenu } from "react-icons/rx";
+import { Dialog } from "primereact/dialog";
+import SearchVisualIcon from "../../../Assets/Icons/SearchVisual";
 
 const Header = () => {
   const { products } = useProducts();
   const [searchTerm, setSearchTerm] = useState("");
   const [filteredProducts, setFilteredProducts] = useState([]);
+  const [visible, setVisible] = useState(false);
+  const [position, setPosition] = useState("center");
   const navigate = useNavigate();
 
   // Filter products based on user input
@@ -37,27 +42,61 @@ const Header = () => {
     }
   };
 
+  const show = (position) => {
+    setPosition(position);
+    setVisible(true);
+  };
+
   return (
-    <header className="home-header">
-      <div className="container">
-        <a href="/">
-          <img src={Logo} alt="Logo" width={100} />
-        </a>
-        <div className="header-search-bar">
-          <SearchIcon/>
-          <AutoComplete
-            value={searchTerm}
-            suggestions={filteredProducts}
-            completeMethod={searchProducts}
-            field="make"
-            onChange={(e) => setSearchTerm(e.value)}
-            onSelect={(e) => onProductSelect(e.value)}
-            placeholder="Search for an item"
-            className="header-search-input"
-            onKeyDown={handleKeyPress}
-          />
-        </div>
-        <nav>
+    <>
+      <header className="home-header">
+        <div className="container">
+          <a href="/">
+            <img src={Logo} alt="Logo" width={100} />
+          </a>
+          <div className="header-search-bar md">
+            <div className="header-search-icon">
+              <SearchIcon />
+            </div>
+
+            <AutoComplete
+              value={searchTerm}
+              suggestions={filteredProducts}
+              completeMethod={searchProducts}
+              field="make"
+              onChange={(e) => setSearchTerm(e.value)}
+              onSelect={(e) => onProductSelect(e.value)}
+              placeholder="Search for an item"
+              className="header-search-input"
+              onKeyDown={handleKeyPress}
+            />
+          </div>
+
+          <div className="header-search-bar sm">
+            <div className="header-search-icon">
+              <SearchIcon />
+            </div>
+
+            <AutoComplete
+              value={searchTerm}
+              suggestions={filteredProducts}
+              completeMethod={searchProducts}
+              field="make"
+              onChange={(e) => setSearchTerm(e.value)}
+              onSelect={(e) => onProductSelect(e.value)}
+              placeholder="Find your favorite items"
+              className="header-search-input"
+              onKeyDown={handleKeyPress}
+            />
+            <span className="header-search-icon-last">
+              <SearchVisualIcon />
+            </span>
+          </div>
+
+          <span className="app-hamburger" onClick={() => show("left")}>
+            <RxHamburgerMenu />
+          </span>
+          <nav>
             <ul className="nav-list">
               <li>
                 <Link to="/products">Shop By Category</Link>
@@ -70,8 +109,38 @@ const Header = () => {
               </li> */}
             </ul>
           </nav>
-      </div>
-    </header>
+        </div>
+      </header>
+      <Dialog
+        header="RV Listing"
+        visible={visible}
+        position={position}
+        style={{ width: "50vw" }}
+        onHide={() => {
+          if (!visible) return;
+          setVisible(false);
+        }}
+        draggable={false}
+        resizable={false}
+        className="flyout-dialog"
+      >
+        <div className="flyout-menu">
+          <nav>
+            <ul className="nav-list">
+              <li>
+                <Link to="/products">Shop By Category</Link>
+              </li>
+              <li>
+                <Link to="#">Deals & Services</Link>
+              </li>
+              <li>
+                <Link to="#">Find A Store</Link>
+              </li>
+            </ul>
+          </nav>
+        </div>
+      </Dialog>
+    </>
   );
 };
 

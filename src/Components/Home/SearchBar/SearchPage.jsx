@@ -9,7 +9,6 @@ const SearchPage = () => {
     const [searchParams] = useSearchParams();
     const query = searchParams.get("q")?.toLowerCase() || "";
   
-    // Filter products dynamically based on any matching field
     const filteredProducts = products.filter((product) =>
       Object.values(product).some(
         (value) =>
