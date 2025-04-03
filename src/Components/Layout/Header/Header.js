@@ -8,6 +8,7 @@ import SearchIcon from "../../../Assets/Icons/SearchIcon";
 import { RxHamburgerMenu } from "react-icons/rx";
 import { Dialog } from "primereact/dialog";
 import SearchVisualIcon from "../../../Assets/Icons/SearchVisual";
+//Test Comment
 
 const Header = () => {
   const { products } = useProducts();
