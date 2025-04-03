@@ -1,8 +1,7 @@
 import { useEffect, useState } from "react";
-import { Link } from "react-router-dom"; // Fix: use react-router-dom
+import { Link } from "react-router-dom";
 import imageCompression from "browser-image-compression";
 import FloorPlanIcon from "../../../../Assets/Icons/FloorPlanIcon";
-// import RVImage from "../../../../Assets/Images/Home/rv-image.png";
 import PlaceholderImage from "../../../../Assets/Images/Home/placeholder.jpg"
 import "./productitem.css";
 
@@ -14,16 +13,16 @@ const convertToWebP = async (imageSrc) => {
     const file = new File([blob], "image.png", { type: blob.type });
 
     const options = {
-      maxSizeMB: 1, // Adjust for performance
-      maxWidthOrHeight: 800, // Resize images
-      fileType: "image/webp", // Convert to WebP
+      maxSizeMB: 1, 
+      maxWidthOrHeight: 800, 
+      fileType: "image/webp",
     };
 
     const compressedFile = await imageCompression(file, options);
     return URL.createObjectURL(compressedFile);
   } catch (error) {
     console.error("Error converting image to WebP:", error);
-    return imageSrc; // Return original image if conversion fails
+    return imageSrc; 
   }
 };
 
@@ -39,7 +38,7 @@ const ProductItem = ({ product }) => {
     };
 
     processImage();
-  }, [product.rv_pics]); // Re-run if product images change
+  }, [product.rv_pics]);
 
   return (
     <Link to={`/product/${product.id}`} className="rv-product-item">
