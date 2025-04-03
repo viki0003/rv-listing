@@ -155,7 +155,7 @@ const Footer = () => {
             <div className="newsletter-ui">
               <div className="newsletter-form">
                 <input type="email" placeholder="Your email" />
-                <button type="submit">subcribe</button>
+                <button type="submit">subscribe</button>
               </div>
               <p>
                 By clicking the SUBSCRIBE button, you are agreeing to our{" "}
@@ -186,7 +186,7 @@ const Footer = () => {
           </li>
         </ul>
       </div>
-      <div className="copyright-text">©2025 Authority Entrepreneur </div>
+      <div className="copyright-text">© 2025 Nationwide RV </div>
     </footer>
   );
 };
