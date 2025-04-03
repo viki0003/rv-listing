@@ -1,11 +1,14 @@
 import Routing from "./Routes/route";
-import 'primereact/resources/themes/lara-light-cyan/theme.css';
+import "primereact/resources/themes/lara-light-cyan/theme.css";
 import "./App.css";
+import { ProductsApiProvider } from "./ApiContext/ProductApi";
 
 function App() {
   return (
     <>
-      <Routing />
+      <ProductsApiProvider>
+        <Routing />
+      </ProductsApiProvider>
     </>
   );
 }

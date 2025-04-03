@@ -1,19 +1,17 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { Dialog } from "primereact/dialog";
 import { Button } from "primereact/button";
-import axios from "axios";
+import { useNavigate } from "react-router-dom";
 import ProductItem from "../../../Home/PopularSales/ProductItem/ProductItem";
 import ProductFilter from "../Filter/Filter";
-import { useNavigate } from "react-router-dom";
 import FilterIcon from "../../../../Assets/Icons/FilterIcon";
 import "./allproducts.css";
 import Loader from "../../../Loader";
 import { IoChevronBack, IoChevronForward } from "react-icons/io5";
+import { useProducts } from "../../../../ApiContext/ProductApi"; // Import context
 
 const AllProducts = () => {
-  const [products, setProducts] = useState([]);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
+  const { products, loading, error } = useProducts(); // Fetch products from context
   const [sortOrder, setSortOrder] = useState("new");
   const [currentPage, setCurrentPage] = useState(1);
   const productsPerPage = 20;
@@ -49,35 +47,6 @@ const AllProducts = () => {
     setPosition(position);
     setVisible(true);
   };
-
-  useEffect(() => {
-    const fetchProducts = async () => {
-      try {
-        const response = await axios.get(
-          "https://rvlistingbackend.campingx.net/main/get_contact_details",
-          {
-            headers: {
-              Authorization: "Bearer 9r3j@92rjierh@jhh#e992QW",
-            },
-          }
-        );
-
-        // console.log("API Response:", response.data);
-        const updatedProducts = (response.data.data || []).map((product) => ({
-          ...product,
-          vehicle_length: Number((Math.random() * (70 - 20) + 20).toFixed(2)), // Random length between 20 to 70 feet
-        }));
-        setProducts(updatedProducts);
-      } catch (err) {
-        console.error("Error fetching data:", err);
-        setError("Failed to fetch products.");
-      } finally {
-        setLoading(false);
-      }
-    };
-
-    fetchProducts();
-  }, []);
 
   const filteredProducts = products.filter(
     (product) =>
@@ -115,10 +84,7 @@ const AllProducts = () => {
             visible={visible}
             position={position}
             className="responsive-filter-dialog"
-            onHide={() => {
-              if (!visible) return;
-              setVisible(false);
-            }}
+            onHide={() => setVisible(false)}
             footer={footerContent}
             draggable={false}
             resizable={false}
@@ -165,9 +131,7 @@ const AllProducts = () => {
           >
             <IoChevronBack />
           </button>
-          <span>
-            {currentPage}  
-          </span>
+          <span>{currentPage}</span>
           <button
             disabled={currentPage === totalPages}
             onClick={() => setCurrentPage(currentPage + 1)}

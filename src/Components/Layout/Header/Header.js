@@ -1,46 +1,63 @@
-import React from "react";
-import "./header.css";
+import React, { useState } from "react";
+import { AutoComplete } from "primereact/autocomplete";
+import { Link, useNavigate } from "react-router-dom";
+import { useProducts } from "../../../ApiContext/ProductApi";
 import Logo from "../../../Assets/Images/Home/RVLogo.png";
-import { Link } from "react-router";
-import SearchBar from "../../Home/SearchBar/SearchBar";
+import "./header.css";
+import SearchIcon from "../../../Assets/Icons/SearchIcon";
 
 const Header = () => {
+  const { products } = useProducts();
+  const [searchTerm, setSearchTerm] = useState("");
+  const [filteredProducts, setFilteredProducts] = useState([]);
+  const navigate = useNavigate();
+
+  // Filter products based on user input
+  const searchProducts = (event) => {
+    let query = event.query.toLowerCase();
+    let filtered = products.filter((product) =>
+      Object.values(product).some(
+        (value) =>
+          typeof value === "string" && value.toLowerCase().includes(query)
+      )
+    );
+    setFilteredProducts(filtered);
+  };
+
+  // Handle product selection from suggestions
+  const onProductSelect = (selectedProduct) => {
+    setSearchTerm(selectedProduct.make);
+    navigate(`/search?q=${selectedProduct.make}`);
+  };
+
+  // Handle search on Enter key
+  const handleKeyPress = (event) => {
+    if (event.key === "Enter") {
+      navigate(`/search?q=${searchTerm}`);
+    }
+  };
+
   return (
-    <>
-      <header className="home-header">
-        <div className="container">
-          <Link to="/">
-            <img src={Logo} alt="Logo" width={100} />
-          </Link>
-          {/* <div className="header-search-bar">
-            <svg
-              width="20"
-              height="20"
-              className="search-icon header-search"
-              viewBox="0 0 22 20"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path
-                d="M16.5 16.5L21 21"
-                stroke="#323135"
-                strokeWidth="1.5"
-                strokeLinejoin="round"
-              />
-              <path
-                d="M19 10C19 5.02944 14.9706 1 10 1C5.02944 1 1 5.02944 1 10C1 14.9706 5.02944 19 10 19C14.9706 19 19 14.9706 19 10Z"
-                stroke="#323135"
-                strokeWidth="1.5"
-                strokeLinejoin="round"
-              />
-            </svg>
-             <input
-              type="text"
-              placeholder="Search for an item"
-              className="header-search-input"
-            /> 
-          </div> */}
-          <nav>
+    <header className="home-header">
+      <div className="container">
+        <a href="/">
+          <img src={Logo} alt="Logo" width={100} />
+        </a>
+        <div className="header-search-bar">
+          <SearchIcon/>
+          <AutoComplete
+            value={searchTerm}
+            suggestions={filteredProducts}
+            completeMethod={searchProducts}
+            field="make"
+            onChange={(e) => setSearchTerm(e.value)}
+            onSelect={(e) => onProductSelect(e.value)}
+            placeholder="Search for an item"
+            className="header-search-input"
+            onKeyDown={handleKeyPress}
+          />
+        </div>
+        <nav>
             <ul className="nav-list">
               <li>
                 <Link to="/products">Shop By Category</Link>
@@ -53,12 +70,9 @@ const Header = () => {
               </li> */}
             </ul>
           </nav>
-        </div>
-      </header>
-      <span className="home-search-bar">
-        <SearchBar />
-      </span>
-    </>
+      </div>
+    </header>
   );
 };
+
 export default Header;

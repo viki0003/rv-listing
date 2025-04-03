@@ -59,10 +59,21 @@ header nav ul.nav-list li a {
     background: transparent;
   }
   
-  /* Optional: Change border color when input is focused */
-  .header-search-bar:focus {
-    
-  }
+  .header-search-bar .header-search-input {
+    padding: 0;
+    background: transparent;
+}
+
+.header-search-bar .header-search-input input.p-autocomplete-input.p-inputtext.p-component {
+    background: transparent;
+    width: 100%;
+}
+
+.header-search-bar .header-search-input input{
+    border: none;
+    outline: none;
+    box-shadow: none;
+}
   
 @media screen and (max-width: 768px) {
     

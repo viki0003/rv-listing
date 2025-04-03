@@ -35,3 +35,7 @@ ul{
 span.home-search-bar {
   display: none;
 }
+
+.search-page-container {
+  margin: 50px 0px;
+}
