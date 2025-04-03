@@ -13,6 +13,26 @@ const Footer = () => {
   return (
     <footer>
       <div className="ftr-ui">
+        <div className="ftr-social-icons mobile-view">
+          <h5>Socials</h5>
+          <div className="social-icons-list">
+            <Link to="">
+              <FBIcon />
+            </Link>
+            <Link to="">
+              <TwitterIcon />
+            </Link>
+            <Link to="">
+              <InstaIcon />
+            </Link>
+            <Link to="">
+              <TikTokIcon />
+            </Link>
+            <Link to="">
+              <SnapIcon />
+            </Link>
+          </div>
+        </div>
         <div className="ftr-links">
           <div className="ftr-links-col">
             <h5>Company Info</h5>
@@ -71,7 +91,18 @@ const Footer = () => {
             </ul>
           </div>
         </div>
-        <div className="ftr-social-col">
+        <div className="platform-list mobile-view">
+              <h5>Platforms</h5>
+              <div className="pl-icons">
+                <span>
+                  <Android />
+                </span>
+                <span>
+                  <AppleIcon />
+                </span>
+              </div>
+            </div>
+        <div className="ftr-social-col desktop-view">
           <div className="ftr-social-pltfrm">
             <div className="ftr-social-icons">
               <h5>Socials</h5>
@@ -105,7 +136,7 @@ const Footer = () => {
               </div>
             </div>
           </div>
-          <div className="ftr-newsletter">
+          <div className="ftr-newsletter desktop-view">
             <h5>SIGN UP for new arrivals</h5>
             <div className="newsletter-ui">
               <div className="newsletter-form">
@@ -119,6 +150,19 @@ const Footer = () => {
             </div>
           </div>
         </div>
+        <div className="ftr-newsletter mobile-view">
+            <h5>SIGN UP for new arrivals</h5>
+            <div className="newsletter-ui">
+              <div className="newsletter-form">
+                <input type="email" placeholder="Your email" />
+                <button type="submit">subcribe</button>
+              </div>
+              <p>
+                By clicking the SUBSCRIBE button, you are agreeing to our{" "}
+                <Link to=""> Privacy & Cookie Policy</Link>
+              </p>
+            </div>
+          </div>
       </div>
       <div className="ftr-privacy-links">
         <ul className="privacy-list">
