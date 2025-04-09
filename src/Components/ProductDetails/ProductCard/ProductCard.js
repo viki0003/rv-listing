@@ -5,6 +5,7 @@ import TPForm from "../../TPForm/TPForm";
 import "./productcard.css";
 import ImageContainer from "../ImageContainer/ImageContainer";
 import ResponsivePDCard from "./ResponsivePDCard/ResponsivePDCard";
+import { Link } from "react-router";
 
 const ProductCard = ({ product }) => {
   const [visible, setVisible] = React.useState(false);
@@ -32,17 +33,20 @@ const ProductCard = ({ product }) => {
             </div>
           </div>
           <p className="cta-text">
-            Do the Math & Save call today! (951)634-8124
+            Do the Math & Save call today!{" "}
+            <Link to={`tel:${product.phone}`}>{product.phone}</Link>
           </p>
 
-          <div className="buttons">
-            <Button label="Get Today's Price" className="primary" onClick={() => setVisible(true)} />
-                        <Dialog className="price-form-ui"  visible={visible}  onHide={() => {if (!visible) return; setVisible(false); }}>
-                            <TPForm/>
-                        </Dialog>
+          {/* <div className="buttons">
+            <Button
+              label="Get Today's Price"
+              className="primary"
+             
+            />
+
             <button className="secondary">Value My Trade</button>
-          </div>
-          <button className="info">Request More Info</button>
+          </div> */}
+          <button className="info"  onClick={() => setVisible(true)}>Request More Info</button>
           <button className="pre-approved">Get Pre-Approved!</button>
 
           <p className="description">
@@ -57,10 +61,19 @@ const ProductCard = ({ product }) => {
           </ul>
         </div>
       </div>
+      <Dialog
+              className="price-form-ui"
+              visible={visible}
+              onHide={() => {
+                if (!visible) return;
+                setVisible(false);
+              }}
+            >
+              <TPForm />
+            </Dialog>
       <div className="responsive-vehicle-info">
-      <ResponsivePDCard/>
+        <ResponsivePDCard />
       </div>
-      
     </div>
   );
 };

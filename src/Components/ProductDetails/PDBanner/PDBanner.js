@@ -8,9 +8,9 @@ const PDBanner = ({ product }) => {
         <div className="container">
           <div className="pl-bg">
             <div className="pl-bg-content">
-              <h2>{product.make}</h2>
+              <h2>{product.vehicle_year}</h2>
               <p>
-                {product.trim_model}
+                {product.make}
               </p>
             </div>
           </div>

@@ -35,6 +35,10 @@
     gap: 18px;
 }
 
+.pl-banner.pl-bnr-cstm .pl-bg {
+  height: 90px;
+}
+
 @media screen and (max-width: 768px) {
   .pl-banner{
     display:none;

@@ -159,6 +159,11 @@
   background: #00000000 !important;
 }
 
+.sell-rv-dialog iframe {
+  width: 100%;
+  height: 800px;
+}
+
 @media (max-width: 1300px) {
   .home-banner .container {
     max-width: 75%;

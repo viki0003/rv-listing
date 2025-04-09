@@ -130,6 +130,14 @@
   padding-bottom: 0;
 }
 
+.product-details-container .cta-text a {
+  color: #000;
+}
+
+.product-details-container .cta-text a:hover {
+  color: #215db5;
+}
+
 
 @media screen and (max-width: 768px) {
   .product-card-container .container {

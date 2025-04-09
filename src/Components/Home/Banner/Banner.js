@@ -1,3 +1,4 @@
+import React, { useState } from "react";
 import { Link } from "react-router";
 import { TabView, TabPanel } from "primereact/tabview";
 import RightArrow from "../../../Assets/Icons/RightArrow";
@@ -13,8 +14,11 @@ import ClassC from "../../../Assets/Images/Home/RVIcons/Class-C.png";
 import DestinationTrailer from "../../../Assets/Images/Home/RVIcons/Destination-trailer.png";
 import PopUp from "../../../Assets/Images/Home/RVIcons/Pop-up.png";
 import SellRVImg from "../../../Assets/Images/Home/sellrv.png";
+import { Dialog } from "primereact/dialog";
 
 const Banner = () => {
+  const [visible, setVisible] = useState(false);
+
   return (
     <div className="home-banner">
       <div className="container">
@@ -98,12 +102,12 @@ const Banner = () => {
             </TabPanel>
             <TabPanel header="Sell Your RV">
               <div className="tab-content">
-                <h1>Shop Your RV</h1>
+                <h1>Sell Your RV</h1>
                 <div className="sell-rv-img">
                   <img src={SellRVImg} alt="sellrv" />
                 </div>
                 <div className="rv-type-btn">
-                  <Link to="/products">
+                  <Link onClick={() => setVisible(true)}>
                     SELL YOUR RVs
                     <span className="btn-icon">
                       <RightArrow />
@@ -125,6 +129,24 @@ const Banner = () => {
             <RightArrow />
           </span>
         </Link> */}
+        <Dialog
+          header="Sell your RV"
+          visible={visible}
+          style={{ width: "50vw" }}
+          onHide={() => {
+            if (!visible) return;
+            setVisible(false);
+          }}
+          className="sell-rv-dialog"
+        >
+          <iframe
+            src="https://link.nationwiderv.net/widget/survey/E8WL9iX0ktdbg6GPhUNk"
+            
+            id="E8WL9iX0ktdbg6GPhUNk"
+            title="2. New Lead Survey [HL Native Survey]"
+          ></iframe>
+          <script src="https://link.nationwiderv.net/js/form_embed.js"></script>
+        </Dialog>
       </div>
     </div>
   );
