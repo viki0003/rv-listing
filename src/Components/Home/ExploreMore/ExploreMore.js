@@ -31,7 +31,7 @@ const ExploreMore = () => {
           <Link to="" className="explore-more-item">
             <img src={VC} alt="explore-more-1" />
             <div className="em-text">
-              <span>Van Camper</span>
+              <span>Motor home</span>
             </div>
           </Link>
         </div>

@@ -10,7 +10,7 @@ const PopularSales = () => {
     <div className="popular-sales-ui">
       <div className="container">
         <div className="heading">
-          <h2>Popular Sales</h2>
+          <h2>Featured Inventory</h2>
           <span className="divider"></span>
         </div>
         <div className="rv-product-list">

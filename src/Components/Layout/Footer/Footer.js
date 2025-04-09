@@ -11,9 +11,10 @@ import AppleIcon from "../../../Assets/Icons/Apple";
 
 const Footer = () => {
   return (
-    <footer>
-      <div className="ftr-ui">
-        <div className="ftr-social-icons mobile-view">
+    <>
+      <footer>
+        <div className="ftr-ui">
+          {/* <div className="ftr-social-icons mobile-view">
           <h5>Socials</h5>
           <div className="social-icons-list">
             <Link to="">
@@ -92,16 +93,16 @@ const Footer = () => {
           </div>
         </div>
         <div className="platform-list mobile-view">
-              <h5>Platforms</h5>
-              <div className="pl-icons">
-                <span>
-                  <Android />
-                </span>
-                <span>
-                  <AppleIcon />
-                </span>
-              </div>
-            </div>
+          <h5>Platforms</h5>
+          <div className="pl-icons">
+            <span>
+              <Android />
+            </span>
+            <span>
+              <AppleIcon />
+            </span>
+          </div>
+        </div>
         <div className="ftr-social-col desktop-view">
           <div className="ftr-social-pltfrm">
             <div className="ftr-social-icons">
@@ -151,43 +152,84 @@ const Footer = () => {
           </div>
         </div>
         <div className="ftr-newsletter mobile-view">
-            <h5>SIGN UP for new arrivals</h5>
-            <div className="newsletter-ui">
-              <div className="newsletter-form">
-                <input type="email" placeholder="Your email" />
-                <button type="submit">subscribe</button>
-              </div>
-              <p>
-                By clicking the SUBSCRIBE button, you are agreeing to our{" "}
-                <Link to=""> Privacy & Cookie Policy</Link>
-              </p>
+          <h5>SIGN UP for new arrivals</h5>
+          <div className="newsletter-ui">
+            <div className="newsletter-form">
+              <input type="email" placeholder="Your email" />
+              <button type="submit">subscribe</button>
             </div>
+            <p>
+              By clicking the SUBSCRIBE button, you are agreeing to our{" "}
+              <Link to=""> Privacy & Cookie Policy</Link>
+            </p>
           </div>
+        </div> */}
+          <div className="ftr-cnt">
+            <p>
+              Facebook® is a registered trademark of Facebook, Inc.
+              (“Facebook”). Instagram® is a registered trademark of Facebook
+              (“Instagram”). Twitter® is a registered trademark of Twitter, Inc.
+              (“Twitter”). Please be advised that Nationwide RV is not in any
+              way affiliated with Facebook, Instagram or Twitter, and the Site
+              Offerings are not endorsed, administered or sponsored by Facebook,
+              Instagram or Twitter.
+            </p>
+            <p>
+              {" "}
+              A copyright notice is just what it sounds like: a written notice
+              stating that a particular work is protected by copyright, and that
+              you own that copyright. The purpose of such notice is to avoid a
+              situation where an infringer takes your work, but then claims that
+              he or she was completely unaware that it was protected.{" "}
+            </p>
+            <p>
+              *1-4 days Guarantee: We must receive all the necessary documents
+              to prepare all the legal documents to complete the transaction.
+              Time starts upon receiving the documents. Banks are not open on
+              Sundays & Holidays so exclude Sundays & Holidays.
+            </p>
+          </div>
+        </div>
+        <div className="ftr-privacy-links">
+          <ul className="privacy-list">
+            <li className="pl-item">
+              <Link to="">Shop your RV</Link>
+            </li>
+            <li className="pl-item">
+              <Link to="">Sell your RV</Link>
+            </li>
+            <li className="pl-item">
+              <Link to="">Terms & Conditions</Link>
+            </li>
+            <li className="pl-item">
+              <Link to="">Privacy Policy</Link>
+            </li>
+          </ul>
+        </div>
+        <div className="ftr-social-icons">
+          <div className="social-icons-list">
+            <Link to="">
+              <FBIcon />
+            </Link>
+            <Link to="">
+              <TwitterIcon />
+            </Link>
+            <Link to="">
+              <InstaIcon />
+            </Link>
+            <Link to="">
+              <TikTokIcon />
+            </Link>
+            <Link to="">
+              <SnapIcon />
+            </Link>
+          </div>
+        </div>
+      </footer>
+      <div className="btm-ftr-cstm">
+        <div className="copyright-text">© 2025 Nationwide RV </div>
       </div>
-      <div className="ftr-privacy-links">
-        <ul className="privacy-list">
-          <li className="pl-item">
-            <Link to="">Privacy Center</Link>
-          </li>
-          <li className="pl-item">
-            <Link to="">Privacy & Cookie Policy</Link>
-          </li>
-          <li className="pl-item">
-            <Link to="">Manage Cookies</Link>
-          </li>
-          <li className="pl-item">
-            <Link to="">Terms & Conditions</Link>
-          </li>
-          <li className="pl-item">
-            <Link to="">Copyright Notice</Link>
-          </li>
-          <li className="pl-item">
-            <Link to="">Imprint</Link>
-          </li>
-        </ul>
-      </div>
-      <div className="copyright-text">© 2025 Nationwide RV </div>
-    </footer>
+    </>
   );
 };
 export default Footer;

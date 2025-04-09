@@ -1,14 +1,12 @@
 import { useEffect, useState } from "react";
 import imageCompression from "browser-image-compression";
 import "./brands.css";
-import ResponsiveBrands from "../ResponsiveBrands/ResponsiveBrands";
 
 // Import PNG Images
 import B1 from "../../../Assets/Images/Home/Brands/chanel.png";
 import B2 from "../../../Assets/Images/Home/Brands/dior.png";
 import B3 from "../../../Assets/Images/Home/Brands/d-g.png";
 import B4 from "../../../Assets/Images/Home/Brands/gucci.png";
-import B5 from "../../../Assets/Images/Home/Brands/zara.png";
 import B6 from "../../../Assets/Images/Home/Brands/versace.png";
 
 // Function to convert image to WebP
@@ -33,7 +31,7 @@ const convertToWebP = async (imageSrc) => {
 };
 
 const Brands = () => {
-  const [webpImages, setWebpImages] = useState([B1, B2, B3, B4, B5, B6]);
+  const [webpImages, setWebpImages] = useState([B1, B2, B3, B4, B6]);
 
   useEffect(() => {
     const processImages = async () => {
@@ -42,7 +40,6 @@ const Brands = () => {
         convertToWebP(B2),
         convertToWebP(B3),
         convertToWebP(B4),
-        convertToWebP(B5),
         convertToWebP(B6),
       ]);
       setWebpImages(convertedImages);

@@ -53,7 +53,7 @@ const Header = () => {
       <header className="home-header">
         <div className="container">
           <a href="/">
-            <img src={Logo} alt="Logo" width={100} />
+            <img src={Logo} alt="Logo" />
           </a>
           <div className="header-search-bar md">
             <div className="header-search-icon">
@@ -100,14 +100,11 @@ const Header = () => {
           <nav>
             <ul className="nav-list">
               <li>
-                <Link to="/products">Shop By Category</Link>
-              </li>
-              {/* <li>
-                <Link to="#">Deals & Services</Link>
+                <Link to="/products">Shop Your RV</Link>
               </li>
               <li>
-                <Link to="#">Find A Store</Link>
-              </li> */}
+                <Link to="#">Sell Your RV</Link>
+              </li>
             </ul>
           </nav>
         </div>
@@ -129,13 +126,10 @@ const Header = () => {
           <nav>
             <ul className="nav-list">
               <li>
-                <Link to="/products">Shop By Category</Link>
+                <Link to="/products">Shop Your RV</Link>
               </li>
               <li>
-                <Link to="#">Deals & Services</Link>
-              </li>
-              <li>
-                <Link to="#">Find A Store</Link>
+                <Link to="#">Sell Your RV</Link>
               </li>
             </ul>
           </nav>
