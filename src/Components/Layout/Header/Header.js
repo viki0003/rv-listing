@@ -8,7 +8,6 @@ import SearchIcon from "../../../Assets/Icons/SearchIcon";
 import { RxHamburgerMenu } from "react-icons/rx";
 import { Dialog } from "primereact/dialog";
 import SearchVisualIcon from "../../../Assets/Icons/SearchVisual";
-//Test Comment
 
 const Header = () => {
   const { products } = useProducts();
@@ -18,7 +17,6 @@ const Header = () => {
   const [position, setPosition] = useState("center");
   const navigate = useNavigate();
 
-  // Filter products based on user input
   const searchProducts = (event) => {
     let query = event.query.toLowerCase();
     let filtered = products.filter((product) =>
@@ -30,13 +28,11 @@ const Header = () => {
     setFilteredProducts(filtered);
   };
 
-  // Handle product selection from suggestions
   const onProductSelect = (selectedProduct) => {
     setSearchTerm(selectedProduct.make);
     navigate(`/search?q=${selectedProduct.make}`);
   };
 
-  // Handle search on Enter key
   const handleKeyPress = (event) => {
     if (event.key === "Enter") {
       navigate(`/search?q=${searchTerm}`);
@@ -53,7 +49,7 @@ const Header = () => {
       <header className="home-header">
         <div className="container">
           <a href="/">
-            <img src={Logo} alt="Logo" />
+            <img src={Logo} alt="Logo" width={180} />
           </a>
           <div className="header-search-bar md">
             <div className="header-search-icon">
