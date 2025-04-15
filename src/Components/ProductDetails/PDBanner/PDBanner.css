@@ -22,6 +22,12 @@
     display:none;
 }
 
+.pd-banner .pl-bg {
+    height: 130px;
+}
+.pd-banner .pl-bg-content {
+    gap: 10px;
+}
 @media screen  and (max-width:768px){
     .pd{
         display:none;

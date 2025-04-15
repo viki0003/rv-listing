@@ -14,7 +14,7 @@ const Header = () => {
   const [searchTerm, setSearchTerm] = useState("");
   const [filteredProducts, setFilteredProducts] = useState([]);
   const [visible, setVisible] = useState(false);
-  const [visibleSell, setVisibleSell] = useState(false);
+  // const [visibleSell, setVisibleSell] = useState(false);
   const [position, setPosition] = useState("center");
   const navigate = useNavigate();
 
@@ -100,13 +100,13 @@ const Header = () => {
                 <Link to="/products">Shop Your RV</Link>
               </li>
               <li>
-                <Link onClick={() => setVisibleSell(true)}>Sell Your RV</Link>
+                <Link to="https://www.nationwiderv.net/" target="_blank">Sell Your RV</Link>
               </li>
             </ul>
           </nav>
         </div>
       </header>
-      <Dialog
+      {/* <Dialog
         header="Sell your RV"
         visible={visibleSell}
         style={{ width: "50vw" }}
@@ -121,7 +121,7 @@ const Header = () => {
           title="2. New Lead Survey [HL Native Survey]"
         ></iframe>
         <script src="https://link.nationwiderv.net/js/form_embed.js"></script>
-      </Dialog>
+      </Dialog> */}
       <Dialog
         header="RV Listing"
         visible={visible}
@@ -142,7 +142,7 @@ const Header = () => {
                 <Link to="/products">Shop Your RV</Link>
               </li>
               <li>
-                <Link to="#">Sell Your RV</Link>
+                <Link to="https://www.nationwiderv.net/" target="_blank">Sell Your RV</Link>
               </li>
             </ul>
           </nav>

@@ -103,7 +103,15 @@ const Banner = () => {
             <TabPanel header="Sell Your RV">
               <div className="tab-content">
                 <h1>Sell Your RV</h1>
-                <div className="sell-rv-img">
+                <iframe
+                  src="https://link.nationwiderv.net/widget/survey/MTkstRjvo85hdw3v9mg0"
+                  
+                  scrolling="yes"
+                  id="MTkstRjvo85hdw3v9mg0"
+                  title="2. New Lead Survey [HL Native Survey] - For Website"
+                ></iframe>
+                <script src="https://link.nationwiderv.net/js/form_embed.js"></script>
+                {/* <div className="sell-rv-img">
                   <img src={SellRVImg} alt="sellrv" />
                 </div>
                 <div className="rv-type-btn">
@@ -113,7 +121,7 @@ const Banner = () => {
                       <RightArrow />
                     </span>
                   </Link>
-                </div>
+                </div> */}
               </div>
             </TabPanel>
           </TabView>
@@ -141,7 +149,6 @@ const Banner = () => {
         >
           <iframe
             src="https://link.nationwiderv.net/widget/survey/E8WL9iX0ktdbg6GPhUNk"
-            
             id="E8WL9iX0ktdbg6GPhUNk"
             title="2. New Lead Survey [HL Native Survey]"
           ></iframe>

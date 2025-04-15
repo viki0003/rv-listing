@@ -164,6 +164,27 @@
   height: 800px;
 }
 
+div#pr_id_231_content .tab-content iframe {
+  width: 100%;
+  height: 200px;
+  overflow: auto;
+}
+
+.ghl-form-wrap {
+  max-width: 500px !important;
+}
+
+.ghl-form-wrap form#_builder-form {
+  max-width: 100% !important;
+}
+
+.tab-content iframe {
+  width: 100%;
+  height: 400px;
+}
+#_builder-form .fields-container {
+  padding: 0px !important;
+}
 @media (max-width: 1300px) {
   .home-banner .container {
     max-width: 75%;
