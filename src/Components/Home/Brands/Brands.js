@@ -1,15 +1,8 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import imageCompression from "browser-image-compression";
+import { useBrandImages } from "../../../ApiContext/BrandImagesContext";
 import "./brands.css";
 
-// Import PNG Images
-import B1 from "../../../Assets/Images/Home/Brands/chanel.png";
-import B2 from "../../../Assets/Images/Home/Brands/dior.png";
-import B3 from "../../../Assets/Images/Home/Brands/d-g.png";
-import B4 from "../../../Assets/Images/Home/Brands/gucci.png";
-import B6 from "../../../Assets/Images/Home/Brands/versace.png";
-
-// Function to convert image to WebP
 const convertToWebP = async (imageSrc) => {
   try {
     const response = await fetch(imageSrc);
@@ -17,53 +10,97 @@ const convertToWebP = async (imageSrc) => {
     const file = new File([blob], "image.png", { type: blob.type });
 
     const options = {
-      maxSizeMB: 1, // Adjust the max size as needed
-      maxWidthOrHeight: 800, // Resize for better performance
-      fileType: "image/webp", // Convert to WebP
+      maxSizeMB: 1,
+      maxWidthOrHeight: 800,
+      fileType: "image/webp",
     };
 
     const compressedFile = await imageCompression(file, options);
     return URL.createObjectURL(compressedFile);
   } catch (error) {
     console.error("Error converting image to WebP:", error);
-    return imageSrc; // Return original image if conversion fails
+    return imageSrc;
   }
 };
 
 const Brands = () => {
-  const [webpImages, setWebpImages] = useState([B1, B2, B3, B4, B6]);
+  const { brandImages, error } = useBrandImages();
+  const [webpImages, setWebpImages] = useState([]);
+  const scrollContainerRef = useRef(null);
+  const scrollIntervalRef = useRef(null);
+  const [isOverflowing, setIsOverflowing] = useState(false);
 
+  // Convert to WebP and set images
   useEffect(() => {
     const processImages = async () => {
-      const convertedImages = await Promise.all([
-        convertToWebP(B1),
-        convertToWebP(B2),
-        convertToWebP(B3),
-        convertToWebP(B4),
-        convertToWebP(B6),
-      ]);
-      setWebpImages(convertedImages);
+      if (brandImages && brandImages.length > 0) {
+        const converted = await Promise.all(
+          brandImages.map((img) => convertToWebP(img.file))
+        );
+        setWebpImages(converted);
+      }
     };
 
     processImages();
-  }, []);
+  }, [brandImages]);
+
+  // Setup sliding
+  useEffect(() => {
+    const container = scrollContainerRef.current;
+    if (!container || webpImages.length === 0) return;
+
+    const checkOverflow = () => {
+      const isContentOverflowing = container.scrollWidth > container.clientWidth;
+      setIsOverflowing(isContentOverflowing);
+    };
+
+    checkOverflow();
+    window.addEventListener("resize", checkOverflow);
+
+    return () => {
+      window.removeEventListener("resize", checkOverflow);
+    };
+  }, [webpImages]);
+
+  useEffect(() => {
+    const container = scrollContainerRef.current;
+    if (!container || !isOverflowing) return;
+
+    const scrollStep = 1;
+    const scrollSpeed = 20;
+
+    scrollIntervalRef.current = setInterval(() => {
+      if (container.scrollLeft + container.clientWidth >= container.scrollWidth) {
+        container.scrollLeft = 0;
+      } else {
+        container.scrollLeft += scrollStep;
+      }
+    }, scrollSpeed);
+
+    return () => {
+      clearInterval(scrollIntervalRef.current);
+    };
+  }, [isOverflowing]);
+
+  if (error) return <p>{error}</p>;
 
   return (
-    <>
-      <div className="brands">
-        <div className="container">
-          <div className="heading">
-            <h2>Brands For You</h2>
-            <span className="divider"></span>
-          </div>
-          <div className="brands-list">
-            {webpImages.map((src, index) => (
-              <img key={index} src={src} alt="brand" />
-            ))}
-          </div>
+    <div className="brands">
+      <div className="container">
+        <div className="heading">
+          <h2>Brands For You</h2>
+          <span className="divider"></span>
         </div>
-      </div>      
-    </>
+        <div
+          className={`brands-list ${isOverflowing ? "scrolling" : ""}`}
+          ref={scrollContainerRef}
+        >
+          {webpImages.map((src, index) => (
+            <img key={index} src={src} alt={`brand-${index}`} />
+          ))}
+        </div>
+      </div>
+    </div>
   );
 };
 

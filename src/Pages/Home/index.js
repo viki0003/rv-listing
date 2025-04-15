@@ -4,7 +4,7 @@ import Brands from "../../Components/Home/Brands/Brands";
 import CTABanner from "../../Components/Home/CTABanner/CTABanner";
 import ExploreMore from "../../Components/Home/ExploreMore/ExploreMore";
 import PopularSales from "../../Components/Home/PopularSales/PopularSales";
-import ResponsiveBrands from "../../Components/Home/ResponsiveBrands/ResponsiveBrands";
+// import ResponsiveBrands from "../../Components/Home/ResponsiveBrands/ResponsiveBrands";
 
 const Home = () => {
   const [isMobile, setIsMobile] = React.useState(window.innerWidth < 768);
@@ -25,7 +25,7 @@ const Home = () => {
     <>
       <Banner />
       <ExploreMore />
-      {isMobile?<ResponsiveBrands/>:''}
+      {isMobile?<Brands/>:''}
       <PopularSales />
       {isMobile?'':<Brands />}
       <CTABanner />

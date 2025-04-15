@@ -6,9 +6,11 @@
 }
 
 .brands-list img {
-    /* width: 80px; */
+    width: 120px;
     height: 80px;
     object-fit: contain;
+    flex-shrink: 0;
+    transition: transform 0.3s ease;
 }
 
 .brands {
@@ -22,8 +24,43 @@
     border-radius: 100px;
 }
 
+.brands-list {
+    display: flex;
+    gap: 56px;
+    overflow-x: auto;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+    justify-content: center;
+    transition: justify-content 0.3s ease;
+  }
+  
+  .brands-list.scrolling {
+    justify-content: flex-start;
+  }
+  
+  .brands-list::-webkit-scrollbar {
+    display: none;
+  }
+  
+  .brands-list img {
+    flex-shrink: 0;
+  }
+
 @media screen and (max-width:768px){
-    .brands{
-        display: none;
-    }
+    
+.brands .heading {
+    display: none;
+}
+
+.brands {
+    margin-bottom: 0;
+}
+
+.brands .brands-list {
+    gap: 15px;
+}
+
+.brands .brands-list img {
+    width: 80px;
+}
 }
