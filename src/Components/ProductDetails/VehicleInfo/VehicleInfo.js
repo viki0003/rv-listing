@@ -15,11 +15,11 @@ const VehicleInfo = ({ product }) => {
         <div className="empty-space"></div>
       </div>
       <div className="vic-buttons">
-      <Button label="Get Today's Price" className="vic-pre-approved" onClick={() => setVisible(true)} />
+      <Button label="Request More Info" className="vic-pre-approved" onClick={() => setVisible(true)} />
             <Dialog visible={visible} onHide={() => {if (!visible) return; setVisible(false); }}>
                 <TPForm/>
             </Dialog>
-        <button className="vic-info">Value My Trade</button>
+        {/* <button className="vic-info">Value My Trade</button> */}
       </div>
     </>
   );

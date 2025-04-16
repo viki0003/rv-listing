@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Dialog } from "primereact/dialog";
 import { Button } from "primereact/button";
 import { useNavigate } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 import ProductItem from "../../../Home/PopularSales/ProductItem/ProductItem";
 import ProductFilter from "../Filter/Filter";
 import FilterIcon from "../../../../Assets/Icons/FilterIcon";
@@ -19,6 +20,9 @@ const AllProducts = () => {
   const [visible, setVisible] = useState(false);
   const [position, setPosition] = useState("center");
   const [value, setValue] = useState([0, 70]);
+  const location = useLocation();
+  const searchParams = new URLSearchParams(location.search);
+  const selectedVehicleType = searchParams.get("vehicle_type")?.toLowerCase();
 
   const handleReset = () => {
     setVisible(false);
@@ -48,10 +52,16 @@ const AllProducts = () => {
     setVisible(true);
   };
 
-  const filteredProducts = products.filter(
-    (product) =>
-      product.vehicle_length >= value[0] && product.vehicle_length <= value[1]
-  );
+  const filteredProducts = products.filter((product) => {
+    const isInLengthRange =
+      product.vehicle_length >= value[0] && product.vehicle_length <= value[1];
+
+    const matchesVehicleType = selectedVehicleType
+      ? product.vehicle_type?.toLowerCase() === selectedVehicleType
+      : true;
+
+    return isInLengthRange && matchesVehicleType;
+  });
 
   const sortedProducts = [...filteredProducts].sort((a, b) => {
     if (sortOrder === "new") {
@@ -78,7 +88,11 @@ const AllProducts = () => {
           >
             ❮
           </span>
-          <span className="responsive-pd-title">Travel Trailer</span>
+          <span className="responsive-pd-title">
+            {selectedVehicleType
+              ? selectedVehicleType.replace(/-/g, " ")
+              : "All RVs"}
+          </span>
           <FilterIcon onClick={() => show("bottom")} />
           <Dialog
             visible={visible}
@@ -89,7 +103,13 @@ const AllProducts = () => {
             draggable={false}
             resizable={false}
           >
-            <ProductFilter value={value} setValue={setValue} />
+            {!loading && !error && displayedProducts.length > 0 ? (
+              <ProductFilter value={value} setValue={setValue} />
+            ) : (
+              <p className="text-center text-sm text-gray-500">
+                No filter options available.
+              </p>
+            )}
           </Dialog>
         </div>
         <div className="products-result">
@@ -111,9 +131,11 @@ const AllProducts = () => {
           </div>
         </div>
         <div className="all-products">
-          <div className="filter-aside">
-            <ProductFilter value={value} setValue={setValue} />
-          </div>
+          {!loading && !error && displayedProducts.length > 0 && (
+            <div className="filter-aside">
+              <ProductFilter value={value} setValue={setValue} />
+            </div>
+          )}
           <div className="all-products-list">
             {loading && <Loader />}
             {error && <p>{error}</p>}
@@ -121,24 +143,31 @@ const AllProducts = () => {
               ? displayedProducts.map((product) => (
                   <ProductItem key={product.id} product={product} />
                 ))
-              : !loading && !error && <p>No products available.</p>}
+              : !loading &&
+                !error && (
+                  <p className="text-center text-lg font-medium text-gray-500">
+                    No RV's at the moment, Check other options.
+                  </p>
+                )}
           </div>
         </div>
-        <div className="pagination-controls">
-          <button
-            disabled={currentPage === 1}
-            onClick={() => setCurrentPage(currentPage - 1)}
-          >
-            <IoChevronBack />
-          </button>
-          <span>{currentPage}</span>
-          <button
-            disabled={currentPage === totalPages}
-            onClick={() => setCurrentPage(currentPage + 1)}
-          >
-            <IoChevronForward />
-          </button>
-        </div>
+        {!loading && !error && displayedProducts.length > 0 && (
+          <div className="pagination-controls">
+            <button
+              disabled={currentPage === 1}
+              onClick={() => setCurrentPage(currentPage - 1)}
+            >
+              <IoChevronBack />
+            </button>
+            <span>{currentPage}</span>
+            <button
+              disabled={currentPage === totalPages}
+              onClick={() => setCurrentPage(currentPage + 1)}
+            >
+              <IoChevronForward />
+            </button>
+          </div>
+        )}
       </div>
     </div>
   );

@@ -53,7 +53,9 @@ const ProductCard = ({ product }) => {
           <button className="info" onClick={() => setVisible(true)}>
             Request More Info
           </button>
-          <button className="pre-approved">Get Pre-Approved!</button>
+          {settings?.pre_approved && (
+            <button className="pre-approved">Get Pre-Approved!</button>
+          )}
 
           <p className="description">
             Lorem ipsum dolor sit amet consectetur. Mattis sed amet dolor a

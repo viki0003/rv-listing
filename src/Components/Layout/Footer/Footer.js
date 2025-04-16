@@ -46,10 +46,10 @@ const Footer = () => {
         <div className="ftr-privacy-links">
           <ul className="privacy-list">
             <li className="pl-item">
-              <Link to="">Shop your RV</Link>
+              <Link to="/products" target="_blank">Shop your RV</Link>
             </li>
             <li className="pl-item">
-              <Link to="">Sell your RV</Link>
+              <Link to="https://www.nationwiderv.net/" target="_blank">Sell your RV</Link>
             </li>
             <li className="pl-item">
               <Link to="">Terms & Conditions</Link>

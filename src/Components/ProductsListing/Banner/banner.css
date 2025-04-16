@@ -39,6 +39,10 @@
   height: 90px;
 }
 
+.pl-banner.pl-bnr-cstm .pl-bg-content h2 {
+  text-transform: capitalize;
+}
+
 @media screen and (max-width: 768px) {
   .pl-banner{
     display:none;

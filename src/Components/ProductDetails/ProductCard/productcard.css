@@ -138,6 +138,13 @@
   color: #215db5;
 }
 
+.responsive-header-pd {
+  margin-top: 20px;
+}
+
+.pd-responsive-header {
+  font-size: 20px !important;
+}
 
 @media screen and (max-width: 768px) {
   .product-card-container .container {
