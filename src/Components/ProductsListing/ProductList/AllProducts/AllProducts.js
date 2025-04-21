@@ -136,19 +136,48 @@ const AllProducts = () => {
               <ProductFilter value={value} setValue={setValue} />
             </div>
           )}
-          <div className="all-products-list">
+          <div
+            className={`all-products-list ${
+              !loading && !error && displayedProducts.length === 0
+                ? "no-rv-section"
+                : ""
+            }`}
+          >
             {loading && <Loader />}
             {error && <p>{error}</p>}
-            {!loading && !error && displayedProducts.length > 0
-              ? displayedProducts.map((product) => (
-                  <ProductItem key={product.id} product={product} />
-                ))
-              : !loading &&
-                !error && (
-                  <p className="text-center text-lg font-medium text-gray-500">
+
+            {!loading && !error && displayedProducts.length > 0 ? (
+              displayedProducts.map((product) => (
+                <ProductItem key={product.id} product={product} />
+              ))
+            ) : (
+              <div className="no-products">
+                <div className="no-rv-title">
+                  <p className="text-center text-lg font-medium text-gray-500 mb-4">
                     No RV's at the moment, Check other options.
                   </p>
-                )}
+                </div>
+                <div className="suggested-products">
+                  <div className="heading">
+                    <h2>Suggested RV'<span className="small-case">s</span></h2>
+                    <span className="divider"></span>
+                  </div>
+
+                  <div className="suggested-products-grid">
+                    {products
+                      .filter(
+                        (product) =>
+                          product.vehicle_type?.toLowerCase() !==
+                          selectedVehicleType
+                      )
+                      .slice(0, 4) // Show top 6 suggestions
+                      .map((product) => (
+                        <ProductItem key={product.id} product={product} />
+                      ))}
+                  </div>
+                </div>
+              </div>
+            )}
           </div>
         </div>
         {!loading && !error && displayedProducts.length > 0 && (

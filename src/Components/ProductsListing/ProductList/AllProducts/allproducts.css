@@ -169,6 +169,41 @@
     width: 100%;
 }
 
+.suggested-products-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(20%, 1fr));
+    gap: 1rem;
+  }
+
+  .all-products-list.no-rv-section {
+    display: flex;
+    flex-direction: column;
+}
+
+.all-products-list.no-rv-section .no-products .no-rv-title p {
+    text-align: center;
+    font-size: 18px;
+    font-weight: 800;
+    display: flex;
+    justify-content: center;
+    padding: 8px 25px;
+    background: #3c7a89;
+    width: fit-content;
+    color: #fff;
+}
+
+.no-rv-title {
+    display: flex;
+    justify-content: center;
+}
+
+.suggested-products {
+    margin-top: 40px;
+}
+
+.heading h2 span {
+    text-transform: lowercase;
+}
 @media screen and (max-width: 914px) {
     .filter-aside{
         display:none;
