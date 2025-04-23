@@ -5,6 +5,7 @@
 .all-products-ui .all-products {
     display: flex;
     gap: 32px;
+    align-items: flex-start;
 }
 
 
@@ -204,6 +205,13 @@
 .heading h2 span {
     text-transform: lowercase;
 }
+
+.pf-dropdown {
+    width: 100%;
+    padding: 6px 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
 @media screen and (max-width: 914px) {
     .filter-aside{
         display:none;
@@ -230,9 +238,18 @@
         width: 100vw;
     }
     
+    .product-filter {
+        padding: 0px 19px;
+    }
+    
+    .responsive-filter-dialog .p-dialog-header {
+        padding-bottom: 0;
+    }
 }
 @media screen and (max-width: 450px) {
 .all-products .all-products-list {
     grid-template-columns: 1fr;
 }
+
+
 }

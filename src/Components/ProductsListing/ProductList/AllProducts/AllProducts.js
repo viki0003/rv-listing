@@ -9,10 +9,10 @@ import FilterIcon from "../../../../Assets/Icons/FilterIcon";
 import "./allproducts.css";
 import Loader from "../../../Loader";
 import { IoChevronBack, IoChevronForward } from "react-icons/io5";
-import { useProducts } from "../../../../ApiContext/ProductApi"; // Import context
+import { useProducts } from "../../../../ApiContext/ProductApi";
 
 const AllProducts = () => {
-  const { products, loading, error } = useProducts(); // Fetch products from context
+  const { products, loading, error } = useProducts();
   const [sortOrder, setSortOrder] = useState("new");
   const [currentPage, setCurrentPage] = useState(1);
   const productsPerPage = 20;
@@ -20,6 +20,7 @@ const AllProducts = () => {
   const [visible, setVisible] = useState(false);
   const [position, setPosition] = useState("center");
   const [value, setValue] = useState([0, 70]);
+  const [filters, setFilters] = useState({});
   const location = useLocation();
   const searchParams = new URLSearchParams(location.search);
   const selectedVehicleType = searchParams.get("vehicle_type")?.toLowerCase();
@@ -53,6 +54,8 @@ const AllProducts = () => {
   };
 
   const filteredProducts = products.filter((product) => {
+    if (!product) return false;
+
     const isInLengthRange =
       product.vehicle_length >= value[0] && product.vehicle_length <= value[1];
 
@@ -60,9 +63,15 @@ const AllProducts = () => {
       ? product.vehicle_type?.toLowerCase() === selectedVehicleType
       : true;
 
-    return isInLengthRange && matchesVehicleType;
-  });
+    const matchesFilters = Object.entries(filters).every(
+      ([key, selectedValues]) => {
+        if (!selectedValues || selectedValues.length === 0) return true;
+        return selectedValues.includes(product[key]);
+      }
+    );
 
+    return isInLengthRange && matchesVehicleType && matchesFilters;
+  });
   const sortedProducts = [...filteredProducts].sort((a, b) => {
     if (sortOrder === "new") {
       return b.vehicle_year - a.vehicle_year;
@@ -104,7 +113,13 @@ const AllProducts = () => {
             resizable={false}
           >
             {!loading && !error && displayedProducts.length > 0 ? (
-              <ProductFilter value={value} setValue={setValue} />
+              <ProductFilter
+                value={value}
+                setValue={setValue}
+                products={products}
+                filters={filters}
+                setFilters={setFilters}
+              />
             ) : (
               <p className="text-center text-sm text-gray-500">
                 No filter options available.
@@ -131,11 +146,15 @@ const AllProducts = () => {
           </div>
         </div>
         <div className="all-products">
-          {!loading && !error && displayedProducts.length > 0 && (
-            <div className="filter-aside">
-              <ProductFilter value={value} setValue={setValue} />
-            </div>
-          )}
+          <div className="filter-aside">
+            <ProductFilter
+              value={value}
+              setValue={setValue}
+              products={products}
+              filters={filters}
+              setFilters={setFilters}
+            />
+          </div>
           <div
             className={`all-products-list ${
               !loading && !error && displayedProducts.length === 0
@@ -150,7 +169,7 @@ const AllProducts = () => {
               displayedProducts.map((product) => (
                 <ProductItem key={product.id} product={product} />
               ))
-            ) : (
+            ) : !loading && !error ? (
               <div className="no-products">
                 <div className="no-rv-title">
                   <p className="text-center text-lg font-medium text-gray-500 mb-4">
@@ -159,10 +178,11 @@ const AllProducts = () => {
                 </div>
                 <div className="suggested-products">
                   <div className="heading">
-                    <h2>Suggested RV'<span className="small-case">s</span></h2>
+                    <h2>
+                      Suggested RV'<span className="small-case">s</span>
+                    </h2>
                     <span className="divider"></span>
                   </div>
-
                   <div className="suggested-products-grid">
                     {products
                       .filter(
@@ -170,14 +190,14 @@ const AllProducts = () => {
                           product.vehicle_type?.toLowerCase() !==
                           selectedVehicleType
                       )
-                      .slice(0, 4) // Show top 6 suggestions
+                      .slice(0, 4)
                       .map((product) => (
                         <ProductItem key={product.id} product={product} />
                       ))}
                   </div>
                 </div>
               </div>
-            )}
+            ) : null}
           </div>
         </div>
         {!loading && !error && displayedProducts.length > 0 && (

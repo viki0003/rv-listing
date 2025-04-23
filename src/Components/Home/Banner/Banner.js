@@ -1,18 +1,18 @@
 import React, { useState } from "react";
 import { TabView, TabPanel } from "primereact/tabview";
 import "./banner.css";
-
 import { Dialog } from "primereact/dialog";
 import ShopRVTab from "./ShopRVTab";
 
 const Banner = () => {
   const [visible, setVisible] = useState(false);
+  const [activeIndex, setActiveIndex] = useState(0); // 0 = Shop RV, 1 = Sell RV
 
   return (
     <div className="home-banner">
-      <div className="container">
+      <div className={`container ${activeIndex === 1 ? "sell-rv-container" : ""}`}>
         <div className="banner-tab">
-          <TabView>
+          <TabView activeIndex={activeIndex} onTabChange={(e) => setActiveIndex(e.index)}>
             <TabPanel header="Shop your RV">
               <ShopRVTab />
             </TabPanel>
@@ -26,32 +26,11 @@ const Banner = () => {
                   title="2. New Lead Survey [HL Native Survey] - For Website"
                 ></iframe>
                 <script src="https://link.nationwiderv.net/js/form_embed.js"></script>
-                {/* <div className="sell-rv-img">
-                  <img src={SellRVImg} alt="sellrv" />
-                </div>
-                <div className="rv-type-btn">
-                  <Link onClick={() => setVisible(true)}>
-                    SELL YOUR RVs
-                    <span className="btn-icon">
-                      <RightArrow />
-                    </span>
-                  </Link>
-                </div> */}
               </div>
             </TabPanel>
           </TabView>
         </div>
-        {/* <h1>“Lorem ipsum dolor sit amet consectetur. Commodo”</h1>
-        <p>
-          Lorem ipsum dolor sit amet consectetur. Mattis sed amet dolor a
-          praesent. Dolor maecenas nunc hac nulla vitae convallis.
-        </p>
-        <Link to="/products">
-          Shop Now
-          <span className="btn-icon">
-            <RightArrow />
-          </span>
-        </Link> */}
+
         <Dialog
           header="Sell your RV"
           visible={visible}
