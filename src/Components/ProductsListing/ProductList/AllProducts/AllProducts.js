@@ -6,6 +6,7 @@ import { useLocation } from "react-router-dom";
 import ProductItem from "../../../Home/PopularSales/ProductItem/ProductItem";
 import ProductFilter from "../Filter/Filter";
 import FilterIcon from "../../../../Assets/Icons/FilterIcon";
+import NoImgAvtar from "../../../../Assets/Images/Products/no-product-img.png";
 import "./allproducts.css";
 import Loader from "../../../Loader";
 import { IoChevronBack, IoChevronForward } from "react-icons/io5";
@@ -86,6 +87,13 @@ const AllProducts = () => {
     (currentPage - 1) * productsPerPage,
     currentPage * productsPerPage
   );
+
+  const handleScroll = () => {
+    const element = document.getElementById("suggestedRv");
+    if (element) {
+      element.scrollIntoView({ behavior: "smooth" });
+    }
+  };
 
   return (
     <div className="all-products-ui">
@@ -172,18 +180,26 @@ const AllProducts = () => {
             ) : !loading && !error ? (
               <div className="no-products">
                 <div className="no-rv-title">
-                  <p className="text-center text-lg font-medium text-gray-500 mb-4">
-                    No RV's at the moment, Check other options.
+                  <div className="no-rv-cnt">
+                  <h5>No Rv‘s that need this criteria at the moment</h5>
+                  <p className="np-para">
+                    The selected Rv is not available at a moment , But we have
+                    more options for you-
+                    <span onClick={() => handleScroll("suggestedRv")}> Check other options</span>
                   </p>
+                  </div>
+                  <div className="no-product-img">
+                    <img src={NoImgAvtar} alt="NoImg" />
+                  </div>
                 </div>
                 <div className="suggested-products">
-                  <div className="heading">
+                  <div className="heading" id="suggestedRv">
                     <h2>
                       Suggested RV'<span className="small-case">s</span>
                     </h2>
                     <span className="divider"></span>
                   </div>
-                  <div className="suggested-products-grid">
+                  <div className="suggested-products-grid" >
                     {products
                       .filter(
                         (product) =>

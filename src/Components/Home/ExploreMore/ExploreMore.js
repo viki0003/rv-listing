@@ -7,7 +7,7 @@ import Categories from "../Categories/Categories";
 import { useNavigate } from "react-router-dom";
 
 const rvTypes = [
-  { label: "Travel Trailer", type: "small-camper", image: TT },
+  { label: "Travel Trailer", type: "travel-trailer", image: TT },
   { label: "Fifth Wheel", type: "5th wheel", image: FH },
   { label: "Motor Home", type: "Motorhome", image: VC },
 ];
