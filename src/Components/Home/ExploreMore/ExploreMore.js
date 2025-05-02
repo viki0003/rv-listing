@@ -5,21 +5,24 @@ import VC from "../../../Assets/Images/Home/van-camper.png";
 import "./exploremore.css";
 import Categories from "../Categories/Categories";
 import { useNavigate } from "react-router-dom";
+import { useSuggestedRV } from "../../../ApiContext/SuggestedRVContext";
 
 const rvTypes = [
   { label: "Travel Trailer", type: "travel-trailer", image: TT },
-  { label: "Fifth Wheel", type: "5th wheel", image: FH },
-  { label: "Motor Home", type: "Motorhome", image: VC },
+  { label: "5th Wheel", type: "5th wheel", image: FH },
+  { label: "Motorhome", type: "Motorhome", image: VC },
 ];
 
 const ExploreMore = () => {
 
-    const navigate = useNavigate();
-  
-    const handleRVTypeClick = (type, label) => {
-      navigate(`/products?vehicle_type=${encodeURIComponent(type)}`);
-    };
-  
+  const navigate = useNavigate();
+  const { setVehicleType } = useSuggestedRV();
+
+  const handleRVTypeClick = (type, label) => {
+    setVehicleType(label); // Set label as vehicleType in context
+    navigate(`/products?vehicle_type=${encodeURIComponent(type)}`);
+  };
+
 
   
   return (
@@ -31,24 +34,7 @@ const ExploreMore = () => {
             <span className="divider"></span>
           </div>
           <div className="explore-more-list">
-            {/* <Link to="" className="explore-more-item">
-            <img src={TT} alt="explore-more-1" />
-            <div className="em-text">
-              <span>Travel Trailer</span>
-            </div>
-          </Link>
-          <Link to="" className="explore-more-item">
-            <img src={FH} alt="explore-more-1" />
-            <div className="em-text">
-              <span>Fifth Wheel</span>
-            </div>
-          </Link>
-          <Link to="" className="explore-more-item">
-            <img src={VC} alt="explore-more-1" />
-            <div className="em-text">
-              <span>Motor home</span>
-            </div>
-          </Link> */}
+           
             {rvTypes.map(({ label, image, type }) => (
               <div
                 key={label}

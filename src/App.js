@@ -4,17 +4,20 @@ import "./App.css";
 import { ProductsApiProvider } from "./ApiContext/ProductApi";
 import { BrandImagesProvider } from "./ApiContext/BrandImagesContext";
 import { ElementSettingsProvider } from "./ApiContext/ElementSettingsContext";
+import { SuggestedRVProvider } from "./ApiContext/SuggestedRVContext";
 
 function App() {
   return (
     <>
-      <ProductsApiProvider>
-        <BrandImagesProvider>
-          <ElementSettingsProvider>
-            <Routing />
-          </ElementSettingsProvider>
-        </BrandImagesProvider>
-      </ProductsApiProvider>
+      <SuggestedRVProvider>
+        <ProductsApiProvider>
+          <BrandImagesProvider>
+            <ElementSettingsProvider>
+              <Routing />
+            </ElementSettingsProvider>
+          </BrandImagesProvider>
+        </ProductsApiProvider>
+      </SuggestedRVProvider>
     </>
   );
 }

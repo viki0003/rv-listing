@@ -1,8 +1,7 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Dialog } from "primereact/dialog";
 import { Button } from "primereact/button";
-import { useNavigate } from "react-router-dom";
-import { useLocation } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 import ProductItem from "../../../Home/PopularSales/ProductItem/ProductItem";
 import ProductFilter from "../Filter/Filter";
 import FilterIcon from "../../../../Assets/Icons/FilterIcon";
@@ -11,6 +10,8 @@ import "./allproducts.css";
 import Loader from "../../../Loader";
 import { IoChevronBack, IoChevronForward } from "react-icons/io5";
 import { useProducts } from "../../../../ApiContext/ProductApi";
+import { useSuggestedRV } from "../../../../ApiContext/SuggestedRVContext";
+import SuggestedRVList from "./SuggestedRVList";
 
 const AllProducts = () => {
   const { products, loading, error } = useProducts();
@@ -22,9 +23,13 @@ const AllProducts = () => {
   const [position, setPosition] = useState("center");
   const [value, setValue] = useState([0, 70]);
   const [filters, setFilters] = useState({});
+  const { suggestedRV } = useSuggestedRV();
+  const [loadings, setLoadingS] = useState(true);
+
+  // const [suggestedproducts, setSuggestedProducts] = useState([]);
   const location = useLocation();
   const searchParams = new URLSearchParams(location.search);
-  const selectedVehicleType = searchParams.get("vehicle_type")?.toLowerCase();
+  const selectedVehicleType = searchParams.get("vehicle_type")?.toLowerCase(); // ✅ keep only this
 
   const handleReset = () => {
     setVisible(false);
@@ -73,12 +78,11 @@ const AllProducts = () => {
 
     return isInLengthRange && matchesVehicleType && matchesFilters;
   });
+
   const sortedProducts = [...filteredProducts].sort((a, b) => {
-    if (sortOrder === "new") {
-      return b.vehicle_year - a.vehicle_year;
-    } else {
-      return a.vehicle_year - b.vehicle_year;
-    }
+    return sortOrder === "new"
+      ? b.vehicle_year - a.vehicle_year
+      : a.vehicle_year - b.vehicle_year;
   });
 
   const totalProducts = sortedProducts.length;
@@ -94,6 +98,15 @@ const AllProducts = () => {
       element.scrollIntoView({ behavior: "smooth" });
     }
   };
+
+  useEffect(() => {
+    if (products || suggestedRV) {
+      setLoadingS(false);
+    }
+  }, [products, suggestedRV]);
+
+  if (loadings) return <p>Loading..</p>;
+  if (error) return <div className="error-message">{error}</div>;
 
   return (
     <div className="all-products-ui">
@@ -135,6 +148,7 @@ const AllProducts = () => {
             )}
           </Dialog>
         </div>
+
         <div className="products-result">
           <p>
             Showing{" "}
@@ -153,6 +167,7 @@ const AllProducts = () => {
             </select>
           </div>
         </div>
+
         <div className="all-products">
           <div className="filter-aside">
             <ProductFilter
@@ -163,6 +178,7 @@ const AllProducts = () => {
               setFilters={setFilters}
             />
           </div>
+
           <div
             className={`all-products-list ${
               !loading && !error && displayedProducts.length === 0
@@ -181,17 +197,18 @@ const AllProducts = () => {
               <div className="no-products">
                 <div className="no-rv-title">
                   <div className="no-rv-cnt">
-                  <h5>No Rv‘s that need this criteria at the moment</h5>
-                  <p className="np-para">
-                    The selected Rv is not available at a moment , But we have
-                    more options for you-
-                    <span onClick={() => handleScroll("suggestedRv")}> Check other options</span>
-                  </p>
+                    <h5>No Rv‘s that meet this criteria at the moment</h5>
+                    <p className="np-para">
+                      The selected Rv is not available at the moment, but we
+                      have more options for you -{" "}
+                      <span onClick={handleScroll}>Check other options</span>
+                    </p>
                   </div>
                   <div className="no-product-img">
                     <img src={NoImgAvtar} alt="NoImg" />
                   </div>
                 </div>
+
                 <div className="suggested-products">
                   <div className="heading" id="suggestedRv">
                     <h2>
@@ -199,23 +216,16 @@ const AllProducts = () => {
                     </h2>
                     <span className="divider"></span>
                   </div>
-                  <div className="suggested-products-grid" >
-                    {products
-                      .filter(
-                        (product) =>
-                          product.vehicle_type?.toLowerCase() !==
-                          selectedVehicleType
-                      )
-                      .slice(0, 4)
-                      .map((product) => (
-                        <ProductItem key={product.id} product={product} />
-                      ))}
-                  </div>
+
+                  
+                     <SuggestedRVList />
+                  
                 </div>
               </div>
             ) : null}
           </div>
         </div>
+
         {!loading && !error && displayedProducts.length > 0 && (
           <div className="pagination-controls">
             <button
