@@ -91,3 +91,14 @@
 }
 
 .product-filter .pf-list-item .pf-select-filter-list .flex.align-items-center .p-checkbox.p-component .p-checkbox-box {border-radius: 0px;border: 1.5px solid #374151;}
+
+button.expand-filter-btn {
+    background: transparent;
+    border: 0;
+    padding: 0;
+    text-align: left;
+    width: fit-content;
+    color: #007bff;
+    font-weight: 800 !important;
+    cursor: pointer;
+}

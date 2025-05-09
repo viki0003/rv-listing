@@ -17,6 +17,8 @@ const ProductFilter = ({
     vehicle_year: [],
   });
 
+  const [expandedFilters, setExpandedFilters] = useState({});
+
   const availableFilters = {
     vehicle_type: [
       ...new Set(products?.map((p) => p?.vehicle_type).filter(Boolean)),
@@ -48,6 +50,13 @@ const ProductFilter = ({
       setFilters?.(updated);
       return updated;
     });
+  };
+
+  const toggleShowMore = (key) => {
+    setExpandedFilters((prev) => ({
+      ...prev,
+      [key]: !prev[key],
+    }));
   };
 
   if (!hasFilters) {
@@ -101,8 +110,8 @@ const ProductFilter = ({
               </select>
             ) : values.length > 0 ? (
               <div className="pf-select-filter-list">
-                {values.map((val) => (
-                  <div key={val} className="flex align-items-center">
+                {(expandedFilters[key] ? values : values.slice(0, 8)).map((val) => (
+                  <div key={val} className="flex align-items-center mb-1">
                     <Checkbox
                       inputId={`${key}-${val}`}
                       name={key}
@@ -115,6 +124,16 @@ const ProductFilter = ({
                     </label>
                   </div>
                 ))}
+
+                {values.length > 8 && (
+                  <button
+                    type="button"
+                    className="expand-filter-btn"
+                    onClick={() => toggleShowMore(key)}
+                  >
+                    {expandedFilters[key] ? "Show less" : "Show more"}
+                  </button>
+                )}
               </div>
             ) : (
               <p className="text-gray-400 text-sm">No filter here</p>

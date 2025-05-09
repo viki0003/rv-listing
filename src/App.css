@@ -39,3 +39,14 @@ span.home-search-bar {
 .search-page-container {
   margin: 50px 0px;
 }
+
+.loader {
+  transform: unset !important;
+}
+
+.loader {
+  display: flex
+;
+  align-items: center;
+  justify-content: center !important;
+}
