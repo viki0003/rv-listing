@@ -14,24 +14,38 @@ const Header = () => {
   const [searchTerm, setSearchTerm] = useState("");
   const [filteredProducts, setFilteredProducts] = useState([]);
   const [visible, setVisible] = useState(false);
-  // const [visibleSell, setVisibleSell] = useState(false);
   const [position, setPosition] = useState("center");
   const navigate = useNavigate();
 
   const searchProducts = (event) => {
     let query = event.query.toLowerCase();
-    let filtered = products.filter((product) =>
-      Object.values(product).some(
+    let filtered = products.filter((product) => {
+      const combined = `${product.vehicle_year || ""} ${product.make || ""} ${
+        product.trim_model || ""
+      }`.toLowerCase();
+
+      const matchesCombined = combined.includes(query);
+      const matchesAnyField = Object.values(product).some(
         (value) =>
           typeof value === "string" && value.toLowerCase().includes(query)
-      )
-    );
-    setFilteredProducts(filtered);
+      );
+
+      return matchesCombined || matchesAnyField;
+    });
+
+    const formatted = filtered.map((product) => ({
+      ...product,
+      displayLabel: `${product.vehicle_year || ""} ${product.make || ""} ${
+        product.trim_model || ""
+      }`.trim(),
+    }));
+
+    setFilteredProducts(formatted);
   };
 
   const onProductSelect = (selectedProduct) => {
-    setSearchTerm(selectedProduct.make);
-    navigate(`/search?q=${selectedProduct.make}`);
+    setSearchTerm(selectedProduct.displayLabel);
+    navigate(`/search?q=${selectedProduct.displayLabel}`);
   };
 
   const handleKeyPress = (event) => {
@@ -61,7 +75,7 @@ const Header = () => {
               value={searchTerm}
               suggestions={filteredProducts}
               completeMethod={searchProducts}
-              field="make"
+              field="displayLabel"
               onChange={(e) => setSearchTerm(e.value)}
               onSelect={(e) => onProductSelect(e.value)}
               placeholder="Search for an item"
@@ -100,28 +114,15 @@ const Header = () => {
                 <Link to="/products">Shop Your RV</Link>
               </li>
               <li>
-                <Link to="https://www.nationwiderv.net/" target="_blank">Sell Your RV</Link>
+                <Link to="https://www.nationwiderv.net/" target="_blank">
+                  Sell Your RV
+                </Link>
               </li>
             </ul>
           </nav>
         </div>
       </header>
-      {/* <Dialog
-        header="Sell your RV"
-        visible={visibleSell}
-        style={{ width: "50vw" }}
-        onHide={() => {
-          setVisibleSell(false);
-        }}
-        className="sell-rv-dialog"
-      >
-        <iframe
-          src="https://link.nationwiderv.net/widget/survey/E8WL9iX0ktdbg6GPhUNk"
-          id="E8WL9iX0ktdbg6GPhUNk"
-          title="2. New Lead Survey [HL Native Survey]"
-        ></iframe>
-        <script src="https://link.nationwiderv.net/js/form_embed.js"></script>
-      </Dialog> */}
+     
       <Dialog
         header="RV Listing"
         visible={visible}
@@ -142,7 +143,9 @@ const Header = () => {
                 <Link to="/products">Shop Your RV</Link>
               </li>
               <li>
-                <Link to="https://www.nationwiderv.net/" target="_blank">Sell Your RV</Link>
+                <Link to="https://www.nationwiderv.net/" target="_blank">
+                  Sell Your RV
+                </Link>
               </li>
             </ul>
           </nav>
