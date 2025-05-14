@@ -50,3 +50,7 @@ span.home-search-bar {
   align-items: center;
   justify-content: center !important;
 }
+
+header.home-header .header-search-bar.md {
+  display: none;
+}
