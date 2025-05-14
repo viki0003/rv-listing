@@ -1,71 +1,3 @@
- /*.search-bar {
-    display: flex
-;
-    align-items: center;
-    
-    max-height: 48px;
-    width: 100%;
-    height: 100%;
-    border-radius: 10px;
-    border: 1px solid #ccc;
-    padding: 10px;
-    background: #fff;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-}
-  
-  .search-icon,
-  .scan-icon {
-    width: 20px;
-    height: 20px;
-    color: #555;
-    flex-shrink: 0;
-  }
- 
-  
-  .search-bar input {
-    flex: 1;
-    border: none;
-    outline: none;
-    padding: 0 10px;
-    font-size: 14px;
-    background: transparent;
-  }
-  .active{
-    display: block;
-  }
-  .disabled{
-    display:none;
-  }
-
-  .hidden {
-    opacity: 0;
-    pointer-events: none;
-  }
-  
-  .visible {
-    opacity: 1;
-  }
-  
-  @media (max-width: 400px) {
-    .search-bar {
-        max-width: 100%;
-        padding: 8px;
-    }
-
-  
-    .search-icon,
-    .scan-icon {
-      width: 18px;
-      height: 18px;
-    }
-  
-    .search-bar input {
-      font-size: 12px;
-    }
-  }
-
-  */
-
   .search-bar {
     display: flex;
     align-items: center;
@@ -109,18 +41,7 @@
     align-items:center;
     justify-content: space-between;
 }
-.p-autocomplete-panel.p-component.p-ripple-disabled.p-connected-overlay-enter-done{
-    z-index: 1001;
-    position: absolute;
-    top: 69px !important;
-    left:0 !important;
-    min-width: 300px !important;
-    max-width: 728px !important;
-    margin: 0 20px !important;
-    width: 94.5% !important;
-    transform-origin: center top;
 
-}
 
 .hidden {
     opacity: 0;
@@ -138,3 +59,37 @@
     border-color: transparent !important;
 }
 
+.search-reset-btn {
+  background: none;
+  border: none;
+  padding: 4px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #666;
+  transition: color 0.2s ease;
+}
+
+.search-reset-btn:hover {
+  color: #333;
+}
+
+.all-products .filter-aside .header-search-icon {
+  background: transparent;
+}
+
+.all-products .filter-aside  .header-search-bar.md {
+  background: #f9fafb;
+  border: 0;
+  border-radius: 0px;
+}
+
+.all-products .filter-aside .header-search-bar .header-search-input {
+  background: transparent;
+  padding: 0;
+}
+
+.all-products .filter-aside .header-search-bar.md span#pr_id_13 input.p-autocomplete-input.p-inputtext.p-component {
+  padding-left: 0;
+}

@@ -12,28 +12,54 @@ import { IoChevronBack, IoChevronForward } from "react-icons/io5";
 import { useProducts } from "../../../../ApiContext/ProductApi";
 import { useSuggestedRV } from "../../../../ApiContext/SuggestedRVContext";
 import SuggestedRVList from "./SuggestedRVList";
+import SearchBar from "../../../Home/SearchBar/SearchBar";
 
 const AllProducts = () => {
   const { products, loading, error } = useProducts();
+  const { suggestedRV } = useSuggestedRV();
+  const [loadings, setLoadingS] = useState(true);
+
   const [sortOrder, setSortOrder] = useState("new");
   const [currentPage, setCurrentPage] = useState(1);
   const productsPerPage = 9;
-  const navigate = useNavigate();
+
   const [visible, setVisible] = useState(false);
   const [position, setPosition] = useState("center");
   const [value, setValue] = useState([0, 70]);
   const [filters, setFilters] = useState({});
-  const { suggestedRV } = useSuggestedRV();
-  const [loadings, setLoadingS] = useState(true);
+  const [searchTerm, setSearchTerm] = useState("");
 
-  // const [suggestedproducts, setSuggestedProducts] = useState([]);
+  const navigate = useNavigate();
   const location = useLocation();
   const searchParams = new URLSearchParams(location.search);
   const selectedVehicleType = searchParams.get("vehicle_type")?.toLowerCase();
 
+  useEffect(() => {
+    if (products || suggestedRV) {
+      setLoadingS(false);
+    }
+  }, [products, suggestedRV]);
+
+  // Reset filters if vehicle_type is removed from URL
+  // useEffect(() => {
+  //   if (!selectedVehicleType) {
+  //     setFilters({});
+  //     setValue([0, 70]);
+  //   }
+  // }, [selectedVehicleType]);
+
+  // Optional: Reset filters when user searches with no vehicle_type
+  useEffect(() => {
+    if (!selectedVehicleType && searchTerm) {
+      setFilters({});
+      setValue([0, 70]);
+    }
+  }, [searchTerm, selectedVehicleType]);
+
   const handleReset = () => {
     setVisible(false);
     setValue([0, 70]);
+    setFilters({});
   };
 
   const footerContent = (
@@ -76,7 +102,25 @@ const AllProducts = () => {
       }
     );
 
-    return isInLengthRange && matchesVehicleType && matchesFilters;
+    const searchMatch = () => {
+      if (!searchTerm) return true;
+      const query = searchTerm.toLowerCase();
+      const combined = `${product.vehicle_year || ""} ${product.make || ""} ${
+        product.trim_model || ""
+      }`.toLowerCase();
+
+      const matchesCombined = combined.includes(query);
+      const matchesAnyField = Object.values(product).some(
+        (value) =>
+          typeof value === "string" && value.toLowerCase().includes(query)
+      );
+
+      return matchesCombined || matchesAnyField;
+    };
+
+    return (
+      isInLengthRange && matchesVehicleType && matchesFilters && searchMatch()
+    );
   });
 
   const sortedProducts = [...filteredProducts].sort((a, b) => {
@@ -98,12 +142,6 @@ const AllProducts = () => {
       element.scrollIntoView({ behavior: "smooth" });
     }
   };
-
-  useEffect(() => {
-    if (products || suggestedRV) {
-      setLoadingS(false);
-    }
-  }, [products, suggestedRV]);
 
   if (loadings) return <p>Loading..</p>;
   if (error) return <div className="error-message">{error}</div>;
@@ -170,6 +208,30 @@ const AllProducts = () => {
 
         <div className="all-products">
           <div className="filter-aside">
+            <div>
+              {selectedVehicleType && (
+                <div className="selected-type-label">
+                  <span className="type-name">
+                    {selectedVehicleType.replace(/-/g, " ")}
+                  </span>
+                  <button
+                    className="close-btn"
+                    onClick={() => {
+                      const params = new URLSearchParams(location.search);
+                      params.delete("vehicle_type");
+                      navigate(`/products?${params.toString()}`);
+                    }}
+                  >
+                    ✕
+                  </button>
+                </div>
+              )}
+            </div>
+            <SearchBar
+              searchTerm={searchTerm}
+              setSearchTerm={setSearchTerm}
+              products={products}
+            />
             <ProductFilter
               value={value}
               setValue={setValue}
@@ -216,63 +278,67 @@ const AllProducts = () => {
                       </h2>
                       <span className="divider"></span>
                     </div>
-
                     <SuggestedRVList />
                   </div>
                 </div>
               ) : null}
             </div>
+
             {!loading && !error && totalProducts > 0 && (
               <div className="pagination-container">
-              <button
-                disabled={currentPage === 1}
-                onClick={() => setCurrentPage(currentPage - 1)}
-                className={`pagination-arrow ${currentPage === 1 ? "disabled" : ""}`}
-              >
-                <IoChevronBack />
-              </button>
-            
-              {Array.from({ length: totalPages }, (_, index) => index + 1)
-                .filter((page) => {
-                  return (
-                    page === 1 ||
-                    page === totalPages ||
-                    Math.abs(page - currentPage) <= 1
-                  );
-                })
-                .reduce((acc, page, idx, arr) => {
-                  if (idx > 0 && page - arr[idx - 1] > 1) {
-                    acc.push("dots");
-                  }
-                  acc.push(page);
-                  return acc;
-                }, [])
-                .map((item, index) =>
-                  item === "dots" ? (
-                    <span key={`dots-${index}`} className="pagination-dots">
-                      ...
-                    </span>
-                  ) : (
-                    <button
-                      key={item}
-                      onClick={() => setCurrentPage(item)}
-                      className={`pagination-number ${
-                        currentPage === item ? "active" : ""
-                      }`}
-                    >
-                      {item}
-                    </button>
-                  )
-                )}
-            
-              <button
-                disabled={currentPage === totalPages}
-                onClick={() => setCurrentPage(currentPage + 1)}
-                className={`pagination-arrow ${currentPage === totalPages ? "disabled" : ""}`}
-              >
-                <IoChevronForward />
-              </button>
-            </div>
+                <button
+                  disabled={currentPage === 1}
+                  onClick={() => setCurrentPage(currentPage - 1)}
+                  className={`pagination-arrow ${
+                    currentPage === 1 ? "disabled" : ""
+                  }`}
+                >
+                  <IoChevronBack />
+                </button>
+
+                {Array.from({ length: totalPages }, (_, index) => index + 1)
+                  .filter((page) => {
+                    return (
+                      page === 1 ||
+                      page === totalPages ||
+                      Math.abs(page - currentPage) <= 1
+                    );
+                  })
+                  .reduce((acc, page, idx, arr) => {
+                    if (idx > 0 && page - arr[idx - 1] > 1) {
+                      acc.push("dots");
+                    }
+                    acc.push(page);
+                    return acc;
+                  }, [])
+                  .map((item, index) =>
+                    item === "dots" ? (
+                      <span key={`dots-${index}`} className="pagination-dots">
+                        ...
+                      </span>
+                    ) : (
+                      <button
+                        key={item}
+                        onClick={() => setCurrentPage(item)}
+                        className={`pagination-number ${
+                          currentPage === item ? "active" : ""
+                        }`}
+                      >
+                        {item}
+                      </button>
+                    )
+                  )}
+
+                <button
+                  disabled={currentPage === totalPages}
+                  onClick={() => setCurrentPage(currentPage + 1)}
+                  className={`pagination-arrow ${
+                    currentPage === totalPages ? "disabled" : ""
+                  }`}
+                >
+                  <IoChevronForward />
+                </button>
+              </div>
             )}
           </div>
         </div>

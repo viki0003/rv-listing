@@ -294,6 +294,36 @@
     pointer-events: none;
   }
   
+  .selected-type-label {
+    display: flex
+;
+    align-items: center;
+    background-color: #e3f2fd;
+    padding: 7px 20px;
+    margin-bottom: 16px;
+    border-radius: 0px;
+    width: fit-content;
+    font-size: 14px;
+    color: #1a237e;
+    font-weight: 500;
+    gap: 8px;
+    text-transform: capitalize;
+  }
+  
+  .selected-type-label .close-btn {
+    background: none;
+    border: none;
+    font-size: 16px;
+    color: #1a237e;
+    cursor: pointer;
+    font-weight: bold;
+    padding: 0;
+  }
+
+  .selected-type-label span.type-name {
+    padding-top: 1px;
+    padding-right: 3px;
+}
 @media screen and (max-width: 914px) {
     .filter-aside{
         display:none;
