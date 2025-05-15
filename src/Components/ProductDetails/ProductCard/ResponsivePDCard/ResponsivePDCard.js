@@ -7,7 +7,7 @@ const ResponsivePDCard = ({ product }) => {
   return (
     <div className="responsive-product-card">
       <h2 className="responsive-title">
-        Echo Dot (5th Gen, 2022 release) | With bigger vibrant sound
+        {product?.vehicle_year} {product?.make}
       </h2>
       <div className="responsive-pricing-container">
         <p className="responsive-price">
@@ -40,9 +40,9 @@ const ResponsivePDCard = ({ product }) => {
             expanded ? "responsive-expanded" : ""
           }`}
         >
-          Lorem ipsum dolor sit amet consectetur. Arcu donec vitae ipsum
-          facilisi mauris non et. Lorem ipsum dolor sit amet consectetur. Arcu
-          donec...
+          {product?.vehicle_description
+            ? `${product?.vehicle_description}`
+            : "No description available."}
         </p>
         <span
           className="responsive-read-more"

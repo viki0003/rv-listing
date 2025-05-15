@@ -8,7 +8,7 @@ const VehicleDetails = ({ product }) => {
     <div className="wrapper">
       <div className="container">
         <h2>Vehicle Details</h2>
-        <div className="details-wrapper"> {/* Add this wrapper for scroll */}
+        <div className="details-wrapper">
           <table className="details">
             <tbody>
               <tr>
@@ -41,17 +41,7 @@ const VehicleDetails = ({ product }) => {
 
         <div className="description">
           <h3>Vehicle Description</h3>
-          <p>{product.description || "No description available."}</p>
-          
-          {product.features && product.features.length > 0 ? (
-            <ul>
-              {product.features.map((feature, index) => (
-                <li key={index}>{feature}</li>
-              ))}
-            </ul>
-          ) : (
-            <p>No features listed.</p>
-          )}
+          <p>{product?.vehicle_description || "No description available."}</p>
         </div>
       </div>
     </div>

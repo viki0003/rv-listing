@@ -58,15 +58,17 @@ const ProductCard = ({ product }) => {
           )}
 
           <p className="description">
-            Lorem ipsum dolor sit amet consectetur. Mattis sed amet dolor a
-            praesent...
+          {product.vehicle_description
+                  ? `${product?.vehicle_description}`
+                  : "No Description Available"}
+            
           </p>
-          <ul className="features">
+          {/* <ul className="features">
             <li>Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet</li>
             <li>Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet</li>
             <li>Lorem ipsum dolor sit amet</li>
             <li>Lorem ipsum dolor sit amet</li>
-          </ul>
+          </ul> */}
         </div>
       </div>
       <Dialog

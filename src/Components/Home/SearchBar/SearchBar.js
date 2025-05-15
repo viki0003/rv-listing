@@ -8,28 +8,19 @@ const SearchBar = ({ searchTerm, setSearchTerm, products }) => {
     const [filteredProducts, setFilteredProducts] = useState([]);
   
     const searchProducts = (event) => {
-      let query = event.query.toLowerCase();
-      let filtered = products.filter((product) => {
-        const combined = `${product.vehicle_year || ""} ${product.make || ""} ${
-          product.trim_model || ""
-        }`.toLowerCase();
-  
-        const matchesCombined = combined.includes(query);
-        const matchesAnyField = Object.values(product).some(
-          (value) =>
-            typeof value === "string" && value.toLowerCase().includes(query)
-        );
-  
-        return matchesCombined || matchesAnyField;
-      });
-  
+      const query = event.query.toLowerCase();
+    
+      const filtered = products.filter((product) =>
+        Object.entries(product).some(([key, value]) =>
+          typeof value === "string" && value.toLowerCase().includes(query)
+        )
+      );
+    
       const formatted = filtered.map((product) => ({
         ...product,
-        displayLabel: `${product.vehicle_year || ""} ${product.make || ""} ${
-          product.trim_model || ""
-        }`.trim(),
+        displayLabel: `${product.stock_number || ""} ${product.vehicle_year || ""} ${product.make || ""} ${product.series || ""} ${product.trim_model || ""} ${product.vehicle_type || ""}`.trim()
       }));
-  
+    
       setFilteredProducts(formatted);
     };
   
