@@ -75,3 +75,28 @@
   ::-webkit-scrollbar {
     display: none;
   }
+
+  span.responsive-categories .category-container .rv-type-list .rv-type-item .rv-type-img {
+    width: fit-content;
+    background: #ebefff;
+    padding: 10px;
+    border-radius: 10px;
+}
+
+span.responsive-categories .category-container .rv-type-list .rv-type-item .rv-type-img img {
+    filter: invert(0.8);
+    width: 35px;
+}
+
+span.responsive-categories .category-container .rv-type-list .rv-type-item p {
+    color: #333;
+    font-size: 14px;
+    margin-top: 6px;
+}
+
+span.responsive-categories .category-container .rv-type-list.category-list .rv-type-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}

@@ -186,7 +186,25 @@ const AllProducts = () => {
             )}
           </Dialog>
         </div>
-
+        <div className="pty-cstm">
+          {selectedVehicleType && (
+            <div className="selected-type-label">
+              <span className="type-name">
+                {selectedVehicleType.replace(/-/g, " ")}
+              </span>
+              <button
+                className="close-btn"
+                onClick={() => {
+                  const params = new URLSearchParams(location.search);
+                  params.delete("vehicle_type");
+                  navigate(`/products?${params.toString()}`);
+                }}
+              >
+                ✕
+              </button>
+            </div>
+          )}
+        </div>
         <div className="products-result">
           <p>
             Showing{" "}

@@ -9,9 +9,9 @@ import FifthWheel from "../../../Assets/Images/Home/RVIcons/Fifth-Wheel.png";
 import ClassC from "../../../Assets/Images/Home/RVIcons/Class-C.png";
 import DestinationTrailer from "../../../Assets/Images/Home/RVIcons/Destination-trailer.png";
 import PopUp from "../../../Assets/Images/Home/RVIcons/Pop-up.png";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import RightArrow from "../../../Assets/Icons/RightArrow";
-import { useSuggestedRV } from "../../../ApiContext/SuggestedRVContext";
+import RVTypeList from "./RVTypeList";
 
 const rvTypes = [
   { label: "Small Camper", type: "small-camper", image: SmallCamper },
@@ -31,33 +31,10 @@ const rvTypes = [
 ];
 
 const ShopRVTab = () => {
- const navigate = useNavigate();
-   const { setVehicleType } = useSuggestedRV();
- 
-   const handleRVTypeClick = (type, label) => {
-     setVehicleType(label); // Set label as vehicleType in context
-     navigate(`/products?vehicle_type=${encodeURIComponent(type)}`);
-   };
- 
   return (
     <div className="tab-content">
       <h1>Shop Your RV</h1>
-      <div className="rv-type-list">
-        {rvTypes.map(({ label, image, type }) => (
-          <div
-            key={label}
-            className="rv-type-item"
-            onClick={() => handleRVTypeClick(type, label)}
-            style={{ cursor: "pointer" }}
-          >
-            <div className="rv-type-img">
-              <img src={image} alt={label} />
-            </div>
-            <h2>{label}</h2>
-          </div>
-        ))}
-      </div>
-
+      <RVTypeList rvTypes={rvTypes} />
       <div className="rv-type-btn">
         <Link to="/products">
           SHOP ALL RVs
